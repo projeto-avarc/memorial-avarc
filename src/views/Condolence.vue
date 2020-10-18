@@ -1,21 +1,24 @@
 <template>
-  <div class="">
-    <h1>Página da condolência id: {{ id }}</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt tempora ullam recusandae animi molestiae vel hic, quibusdam obcaecati atque laboriosam rerum? Asperiores sed quos temporibus consequuntur. Quaerat perspiciatis doloremque quas!</p>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt tempora ullam recusandae animi molestiae vel hic, quibusdam obcaecati atque laboriosam rerum? Asperiores sed quos temporibus consequuntur. Quaerat perspiciatis doloremque quas!</p>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt tempora ullam recusandae animi molestiae vel hic, quibusdam obcaecati atque laboriosam rerum? Asperiores sed quos temporibus consequuntur. Quaerat perspiciatis doloremque quas!</p>
+  <div>
+    {{ info }}
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import axios from 'axios'
 
 export default {
   name: 'condolencia',
-  data() {
+  data () {
     return {
-      id: this.$route.params.id
+      info: null
     }
+  },
+  mounted () {
+    axios
+      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => (this.info = response))
   }
 }
 </script>
