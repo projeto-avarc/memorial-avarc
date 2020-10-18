@@ -1,12 +1,12 @@
 <template>
-  <router-link :to="to" class="button">{{ msg }}</router-link>
+  <router-link :to="to" class="button">{{ value }}</router-link>
 </template>
 
 <script>
 export default {
   name: 'Button',
   props: {
-    msg: String,
+    value: String,
     to: String
   }
 }
@@ -18,17 +18,27 @@ export default {
   display: inline-block;
   margin: 0 auto;
   border-radius: 4px;
-  background-color: #c72025;
+  background-color: #777777;
   padding: 8px 25px;
   text-decoration: none;
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 250ms;
+  letter-spacing: 0.4px;
 
   &:hover {
-    background-color: #b91e25;
-    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.4);
+    background-color: #6b6b6b;
+    box-shadow: 2px 2px 10px 0 rgba(0,0,0,0.25);
     transform: translateY(-1px);
+  }
+
+  // buttons variations
+  &.primary-color {
+    background-color: #b91e25;
+
+    &:hover {
+      background-color: #c72025;
+    }
   }
 }
 </style>

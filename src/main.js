@@ -6,6 +6,7 @@ import axios from 'axios'
 
 // css imports
 import '@/assets/css/tailwind.scss'
+import '@/assets/css/base.scss'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false

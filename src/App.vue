@@ -4,9 +4,7 @@
 
       <header class="header">
         <img alt="AVARC logo" src="./assets/logo-avarc.jpg">
-        <div class="header__info">
-          <p>Memorial dedicado à história de cada uma das vítimas do coronavírus no Brasil.</p>
-        </div>
+        <p class="text-base">Memorial em Homenagem às Vítimas do Coronavírus</p>
       </header>
     
       <router-view/>
@@ -17,7 +15,6 @@
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -30,13 +27,11 @@
   padding: 0 15px;
 }
 .header {
-  margin-bottom: 50px;
+  max-width: 260px;
+  margin: 0 auto 50px auto;
 
-  &__info {
-    max-width: 400px;
-    display: block;
+  > img {
     margin: 0 auto;
-    font-size: 20px;
   }
 }
 </style>
