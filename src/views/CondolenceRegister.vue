@@ -1,37 +1,37 @@
 <template>
-  <form class="form">
 
+  <form class="form" v-on:submit.prevent="submitForm">
     <div>
       <h2 class="text-left mb-1 text-sm">Informações do falecido:</h2><hr>
 
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label for="grid-name">
-            Nome
+            Nome*
           </label>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-name" type="text" placeholder="Ana">
-          <p class="text-red-500 text-xs italic">Por favor, preencha este campo.</p>
+          <input v-model="condolence.name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-name" type="text" placeholder="Ana">
+          <!-- <p class="text-red-500 text-xs italic">Por favor, preencha este campo.</p> -->
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label for="grid-lastname">
-            Sobrenome
+            Sobrenome*
           </label>
-          <input id="grid-lastname" type="text" placeholder="Clara">
+          <input v-model="condolence.lastname" id="grid-lastname" type="text" placeholder="Clara">
         </div>
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label for="grid-cpf">
-            CPF
+            CPF*
           </label>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-cpf" type="text" placeholder="999.999.999-99">
+          <input v-model="condolence.cpf" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-cpf" type="text" placeholder="999.999.999-99">
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label for="grid-rg">
-            RG
+            RG*
           </label>
-          <input id="grid-rg" type="text" placeholder="99.999.999-9">
+          <input v-model="condolence.rg" id="grid-rg" type="text" placeholder="99.999.999-9">
         </div>
       </div>
 
@@ -41,13 +41,13 @@
             Cor/Raça
           </label>
           <div class="relative">
-            <select id="grid-breed">
-              <option>Selecionar</option>
-              <option>Branca</option>
-              <option>Parda</option>
-              <option>Preta</option>
-              <option>Amarela</option>
-              <option>Indígena</option>
+            <select v-model="condolence.breed" id="grid-breed">
+              <option value="">Selecionar</option>
+              <option value="branca">Branca</option>
+              <option value="parda">Parda</option>
+              <option value="preta">Preta</option>
+              <option value="amarela">Amarela</option>
+              <option value="indigena">Indígena</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -58,7 +58,7 @@
           <label for="grid-street">
             Rua
           </label>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-street" type="text" placeholder="Rua Augusta">
+          <input v-model="condolence.address_street" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-street" type="text" placeholder="Rua Augusta">
         </div>
       </div>
 
@@ -67,13 +67,13 @@
           <label for="grid-city">
             Cidade
           </label>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-city" type="text" placeholder="São Paulo">
+          <input v-model="condolence.address_city" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-city" type="text" placeholder="São Paulo">
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label for="grid-state">
             Estado
           </label>
-          <input id="grid-state" type="text" placeholder="São Paulo">
+          <input v-model="condolence.address_state" id="grid-state" type="text" placeholder="São Paulo">
         </div>
       </div>
     </div>
@@ -83,9 +83,9 @@
       <div class="flex flex-wrap -mx-3 mb-8">
         <div class="w-full px-3 mb-6 md:mb-0">
           <label for="grid-email">
-            E-mail
+            E-mail*
           </label>
-          <input id="grid-email" type="email" placeholder="ana.maria@email.com">
+          <input v-model="condolence.email" id="grid-email" type="email" placeholder="ana.maria@email.com">
         </div>
       </div>
       <div class="flex flex-wrap -mx-3 mb-8">
@@ -94,12 +94,11 @@
             Sentimentos
           </label>
           <div class="relative">
-            <select id="grid-feeling">
-              <option>Selecionar</option>
-              <option>Saudades</option>
-              <option>Inconformismo</option>
-              <option>Fé</option>
-              <option>Esperança</option>
+            <select v-model="condolence.feeling" id="grid-feeling">
+              <option value="saudades" selected>Saudades</option>
+              <option value="inconformismo">Inconformismo</option>
+              <option value="fe">Fé</option>
+              <option value="esperanca">Esperança</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -108,15 +107,14 @@
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label for="grid-status">
-            A minha mensagem é:
+            A minha mensagem é*
           </label>
           <div class="relative">
-            <select id="grid-status">
-              <option>Selecionar</option>
-              <option>Sigilosa</option>
-              <option>Sigilosa - Somente a condolência será colocado na cápsula do tempo sem identificação de sua autoria</option>
-              <option>Parcialmente pública - Será relevado o seu conteúdo e autoria daqui dez anos</option>
-              <option>Pública - Constará no blog do projeto em memória das vítimas do COVID-19</option>
+            <select v-model="condolence.status" id="grid-status">
+              <option value="publica">Pública</option>
+              <option value="parcialmente_publica">Parcialmente pública - Será relevado o seu conteúdo e autoria daqui dez anos</option>
+              <option value="apenas_mensagem">Sigilosa - Somente a condolência será colocado na cápsula do tempo sem identificação de sua autoria</option>
+              <option value="sigilosa">Sigilosa</option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -127,27 +125,55 @@
       <div class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
           <label for="grid-message">
-            Escrever minha condolência:
+            Escrever minha condolência*
           </label>
-          <textarea class="form-textarea mt-1 block w-full" rows="8" placeholder="..." id="grid-message"></textarea>
+          <textarea v-model="condolence.message" class="form-textarea mt-1 block w-full" rows="8" placeholder="..." id="grid-message"></textarea>
         </div>
       </div>
     </div>
 
     <div class="text-center">
-      <Button to='/condolencia/test' value='Enviar' class="primary-color"></Button>
+      <Button value="Enviar" class="primary-color" type="submit"></Button>
     </div>
-
   </form>
+
 </template>
 
 <script>
 import Button from '@/components/Button.vue'
+import axios from 'axios'
 
 export default {
   name: 'condolenceRegister',
+  data () {
+    return {
+      condolence: {
+        name: '',
+        lastname: '',
+        cpf: '',
+        rg: '',
+        breed: 'branca',
+        address_street: '',
+        address_city: '',
+        address_state: '',
+        feeling: 'saudades',
+        message: '',
+        status: 'publica',
+        email: ''
+      }
+    }
+  },
   components: {
     Button
+  },
+  methods: {
+    submitForm(){
+     axios
+      .post('http://localhost:1337/condolencias', this.condolence)
+      .then((res) => {
+        this.$router.push('register-success')
+      })
+    },
   }
 }
 </script>
