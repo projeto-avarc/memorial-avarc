@@ -171,7 +171,7 @@ export default {
      axios
       .post('http://localhost:1337/condolencias', this.condolence)
       .then(() => {
-        this.$router.push('condolencia/sucesso')
+        this.$router.push('/condolencia/sucesso')
       })
     },
   }

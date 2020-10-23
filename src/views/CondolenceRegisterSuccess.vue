@@ -4,11 +4,11 @@
 
     <div class="mt-12 d-flex">
       <router-link to="/condolencia/criar" class="mx-1 mb-2 inline-block text-sm">
-          <Button value="Escrever nova condolência"></Button>
+        <Button value="Escrever nova condolência"></Button>
       </router-link>
-      <a href="http://avarc.com.br/" target="_self" class="mx-1 inline-block text-sm">
-          <Button value="Ir para site da AVARC" class="primary-color"></Button>
-      </a>
+      <router-link to="/condolencias" class="mx-1 mb-2 inline-block text-sm">
+        <Button value="Ver condolências" class="primary-color"></Button>
+      </router-link>
     </div>
   </div>
 </template>

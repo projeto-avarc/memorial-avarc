@@ -27,6 +27,11 @@ export default new Router({
       component: () => import('./views/CondolenceRegisterSuccess.vue')
     },
     {
+      path: '/condolencia/:id',
+      name: 'Condolence',
+      component: () => import('./views/Condolence.vue')
+    },
+    {
       path: '/condolencias',
       name: 'Condolences',
       component: () => import('./views/Condolences.vue')
