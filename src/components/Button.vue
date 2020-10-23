@@ -15,7 +15,6 @@ export default {
 <style scoped lang="scss">
 .button {
   display: inline-block;
-  margin: 0 auto;
   border-radius: 4px;
   background-color: #a9a9a9;
   padding: 8px 25px;

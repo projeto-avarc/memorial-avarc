@@ -3,7 +3,7 @@
     <p class="info">Sua condolência foi registrada e está em processo de aprovação pelos moderadores. Em breve você receberá um e-mail com seu QR Code para compartilhar com os amigos!</p>
 
     <div class="mt-12 d-flex">
-      <router-link to="/criar-condolencia" class="mx-1 mb-2 inline-block text-sm">
+      <router-link to="/condolencia/criar" class="mx-1 mb-2 inline-block text-sm">
           <Button value="Escrever nova condolência"></Button>
       </router-link>
       <a href="http://avarc.com.br/" target="_self" class="mx-1 inline-block text-sm">

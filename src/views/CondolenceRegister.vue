@@ -9,14 +9,14 @@
           <label for="grid-name">
             Nome*
           </label>
-          <input v-model="condolence.name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-name" type="text" placeholder="Ana">
+          <input required v-model="condolence.name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-name" type="text" placeholder="Ana">
           <!-- <p class="text-red-500 text-xs italic">Por favor, preencha este campo.</p> -->
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label for="grid-lastname">
             Sobrenome*
           </label>
-          <input v-model="condolence.lastname" id="grid-lastname" type="text" placeholder="Clara">
+          <input required v-model="condolence.lastname" id="grid-lastname" type="text" placeholder="Clara">
         </div>
       </div>
 
@@ -25,13 +25,13 @@
           <label for="grid-cpf">
             CPF*
           </label>
-          <input v-model="condolence.cpf" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-cpf" type="text" placeholder="999.999.999-99">
+          <input required v-model="condolence.cpf" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-cpf" type="text" placeholder="999.999.999-99">
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label for="grid-rg">
             RG*
           </label>
-          <input v-model="condolence.rg" id="grid-rg" type="text" placeholder="99.999.999-9">
+          <input required v-model="condolence.rg" id="grid-rg" type="text" placeholder="99.999.999-9">
         </div>
       </div>
 
@@ -85,7 +85,7 @@
           <label for="grid-email">
             E-mail*
           </label>
-          <input v-model="condolence.email" id="grid-email" type="email" placeholder="ana.maria@email.com">
+          <input required v-model="condolence.email" id="grid-email" type="email" placeholder="ana.maria@email.com">
         </div>
       </div>
       <div class="flex flex-wrap -mx-3 mb-8">
@@ -107,7 +107,7 @@
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label for="grid-status">
-            A minha mensagem é*
+            A minha mensagem é
           </label>
           <div class="relative">
             <select v-model="condolence.status" id="grid-status">
@@ -127,13 +127,13 @@
           <label for="grid-message">
             Escrever minha condolência*
           </label>
-          <textarea v-model="condolence.message" class="form-textarea mt-1 block w-full" rows="8" placeholder="..." id="grid-message"></textarea>
+          <textarea required v-model="condolence.message" class="form-textarea mt-1 block w-full" rows="8" placeholder="..." id="grid-message"></textarea>
         </div>
       </div>
     </div>
 
     <div class="text-center">
-      <Button value="Enviar" class="primary-color" type="submit"></Button>
+      <Button value="Enviar" class="primary-color mt-10 inline-block" type="submit"></Button>
     </div>
   </form>
 
@@ -170,8 +170,8 @@ export default {
     submitForm(){
      axios
       .post('http://localhost:1337/condolencias', this.condolence)
-      .then((res) => {
-        this.$router.push('register-success')
+      .then(() => {
+        this.$router.push('condolencia/sucesso')
       })
     },
   }

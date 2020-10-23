@@ -14,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/criar-condolencia',
+      path: '/condolencia/criar',
       name: 'CondolenceRegister',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
@@ -22,14 +22,14 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/CondolenceRegister.vue')
     },
     {
-      path: '/register-success',
+      path: '/condolencia/sucesso',
       name: 'CondolenceRegisterSuccess',
       component: () => import('./views/CondolenceRegisterSuccess.vue')
     },
     {
-      path: '/condolencia/:id',
-      name: 'Condolence',
-      component: () => import('./views/Condolence.vue')
+      path: '/condolencias',
+      name: 'Condolences',
+      component: () => import('./views/Condolences.vue')
     },
     { 
       path: "*",
