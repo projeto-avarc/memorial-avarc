@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="to" class="button">{{ value }}</router-link>
+  <button class="button">{{ value }}</button>
 </template>
 
 <script>
@@ -7,7 +7,6 @@ export default {
   name: 'Button',
   props: {
     value: String,
-    to: String
   }
 }
 </script>
@@ -18,7 +17,7 @@ export default {
   display: inline-block;
   margin: 0 auto;
   border-radius: 4px;
-  background-color: #777777;
+  background-color: #a9a9a9;
   padding: 8px 25px;
   text-decoration: none;
   color: #fff;

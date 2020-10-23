@@ -22,9 +22,18 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/CondolenceRegister.vue')
     },
     {
+      path: '/register-success',
+      name: 'CondolenceRegisterSuccess',
+      component: () => import('./views/CondolenceRegisterSuccess.vue')
+    },
+    {
       path: '/condolencia/:id',
       name: 'Condolence',
       component: () => import('./views/Condolence.vue')
+    },
+    { 
+      path: "*",
+      component: () => import('./views/PageNotFound.vue')
     }
   ]
 })

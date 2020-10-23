@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <p class="font-medium text-lg">Deixe sua homenagem para um amigo ou ente querido</p>
-    <Button to='/criar-condolencia' value='Quero escrever :)' class="primary-color"></Button>
+    <router-link to="/criar-condolencia">
+      <Button value="Quero escrever :)" class="primary-color"></Button>
+    </router-link>
   </div>
 </template>
 
