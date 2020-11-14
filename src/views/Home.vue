@@ -1,22 +1,24 @@
 <template>
   <div class="home">
-    <p class="font-medium text-lg">Deixe sua homenagem para um amigo ou ente querido</p>
+    <p class="font-medium text-lg">
+      Deixe sua homenagem para um amigo ou ente querido
+    </p>
     <router-link to="/condolencia/criar">
-      <Button value="Quero escrever :)" class="primary-color"></Button>
+      <Button value="Quero escrever :)" class="bg-primary text-light"></Button>
     </router-link>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Button from '@/components/Button.vue'
+import Button from "@/components/Button.vue";
 
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    Button
-  }
-}
+    Button,
+  },
+};
 </script>
 
 <style lang="scss">
