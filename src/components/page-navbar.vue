@@ -31,7 +31,7 @@
           </a>
         </router-link>
 
-        <router-link to="/condolencia/criar">
+        <router-link to="/condolencias">
           <a
             href="#responsive-header"
             class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 mr-4 font-bold text-base sm:text-lg md:text-md"
@@ -39,7 +39,7 @@
             Listagem de Condolências
           </a>
         </router-link>
-        <router-link to="/condolencia/criar">
+        <router-link to="#">
           <a
             href="#responsive-header"
             class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 font-bold text-base sm:text-lg md:text-md"

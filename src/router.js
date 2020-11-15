@@ -29,11 +29,11 @@ export default new Router({
         //   name: "Condolence",
         //   component: () => import("./views/Condolence.vue"),
         // },
-        // {
-        //   path: "/condolencias",
-        //   name: "Condolences",
-        //   component: () => import("./views/Condolences.vue"),
-        // },
+        {
+          path: "/condolencias",
+          name: "Condolences",
+          component: () => import("./views/Condolences.vue"),
+        },
         {
           path: "/condolencia/criar",
           name: "CondolenceRegister",
