@@ -1,29 +1,26 @@
 <template>
   <div class="main">
     <Navbar></Navbar>
-    <div class="title">
-      <!-- <p class="font-medium text-lg">
-        Deixe sua homenagem para um amigo ou ente querido
-      </p> -->
-      <!-- <router-link to="/condolencia/criar">
-        <Button
-          value="Quero escrever :)"
-          class="bg-primary text-light"
-        ></Button>
-      </router-link> -->
+    <div class="container mx-auto">
+      <PrincipalText></PrincipalText>
+      <router-view></router-view>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/page-navbar.vue";
-//import Button from "@/components/Button.vue";
+import PrincipalText from "@/components/PrincipalText.vue";
 
 export default {
   components: {
     Navbar,
-    //Button,
+    PrincipalText,
+  },
+  state: {
+    navigation: {
+      show: true,
+    },
   },
 };
 </script>
@@ -36,5 +33,10 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position-x: center;
+}
+@media (max-width: 640px) {
+  .main {
+    background-image: url("../assets/images/foto_fundo_mobile.jpg");
+  }
 }
 </style>

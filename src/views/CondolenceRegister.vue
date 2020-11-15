@@ -1,6 +1,6 @@
 <template>
   <form class="form" v-on:submit.prevent="submitForm">
-    <div>
+    <!-- <div>
       <h2 class="text-left mb-1 text-sm">Informações do falecido:</h2>
       <hr />
 
@@ -17,7 +17,7 @@
             type="text"
             placeholder="Ana"
           />
-          <!-- <p class="text-red-500 text-xs italic">Por favor, preencha este campo.</p> -->
+          <p class="text-red-500 text-xs italic">Por favor, preencha este campo.</p>
         </div>
         <div class="w-full md:w-1/2 px-3">
           <label for="grid-lastname">
@@ -129,10 +129,10 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
     <hr />
 
-    <div>
+    <!-- <div>
       <div class="flex flex-wrap -mx-3 mb-8">
         <div class="w-full px-3 mb-6 md:mb-0">
           <label for="grid-email">
@@ -230,12 +230,12 @@
         class="primary-color mt-10 inline-block"
         type="submit"
       ></Button>
-    </div>
+    </div> -->
   </form>
 </template>
 
 <script>
-import Button from "@/components/Button.vue";
+// import Button from "@/components/Button.vue";
 import axios from "axios";
 
 export default {
@@ -259,7 +259,7 @@ export default {
     };
   },
   components: {
-    Button,
+    //Button,
   },
   methods: {
     submitForm() {
@@ -276,6 +276,7 @@ export default {
 <style lang="scss">
 .form {
   text-align: left;
+
   @apply mb-10 w-full;
   label {
     @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;

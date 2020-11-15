@@ -1,24 +1,55 @@
 <template>
-  <header class="menu">
-    <div class="logo container">
+  <nav class="flex items-center justify-between flex-wrap bg-white p-4">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
       <img
         src="../assets/images/logo_memorial_avarc.svg"
         alt="Logo Memorial Avarc"
+        style="width: 160px;"
       />
-      <div class="links">
-        <span>Visualizar Condolências</span>
-        <span>Fale Conosco</span>
-        <router-link to="/condolencia/criar">Publicar Condolência</router-link>
-      </div>
-
-      <!-- <router-link to="/condolencia/criar">
-        <Button
-          value="Quero escrever :)"
-          class="bg-primary text-light"
-        ></Button>
-      </router-link> -->
     </div>
-  </header>
+    <div class="block lg:hidden">
+      <button
+        class="flex items-center px-3 py-2 border rounded text-blue-900 border-blue-900 hover:text-blue-600 hover:border-blue-600"
+      >
+        <svg
+          class="fill-current h-3 w-3"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </button>
+    </div>
+    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+      <div class="text-sm lg:flex-grow">
+        <router-link to="/condolencia/criar">
+          <a
+            class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 mr-4 font-bold text-base sm:text-lg md:text-md"
+          >
+            Publicar Condolência
+          </a>
+        </router-link>
+
+        <router-link to="/condolencia/criar">
+          <a
+            href="#responsive-header"
+            class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 mr-4 font-bold text-base sm:text-lg md:text-md"
+          >
+            Listagem de Condolências
+          </a>
+        </router-link>
+        <router-link to="/condolencia/criar">
+          <a
+            href="#responsive-header"
+            class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 font-bold text-base sm:text-lg md:text-md"
+          >
+            Fale Conosco
+          </a>
+        </router-link>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -26,22 +57,7 @@ export default {};
 </script>
 
 <style scoped lang="scss">
-.menu {
-  padding-top: 1rem;
-  background-color: #f1f1f1;
-  width: 100%;
-  box-shadow: 0px 22px 50px 25px #f1f1f1;
-  .logo {
-    display: flex;
-    align-items: center;
-    > img {
-      max-width: 160px;
-    }
-    .links > span {
-      color: #08083a;
-      margin: 0 1.5rem;
-      cursor: pointer;
-    }
-  }
+nav {
+  box-shadow: 0px 22px 50px 25px #fff;
 }
 </style>
