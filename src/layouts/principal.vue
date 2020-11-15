@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <Navbar></Navbar>
-    <div class="title lg:container lg:mx-auto">
+    <div class="title">
       <!-- <p class="font-medium text-lg">
         Deixe sua homenagem para um amigo ou ente querido
       </p> -->

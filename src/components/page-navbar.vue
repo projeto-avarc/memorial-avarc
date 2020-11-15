@@ -1,6 +1,6 @@
 <template>
   <header class="menu">
-    <div class="logo lg:container lg:mx-auto">
+    <div class="logo container">
       <img
         src="../assets/images/logo_memorial_avarc.svg"
         alt="Logo Memorial Avarc"
