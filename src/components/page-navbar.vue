@@ -27,24 +27,24 @@
       </button>
     </div>
     <div
-      class="w-full block flex-grow lg:flex lg:items-center lg:w-auto"
+      class="w-full block flex-grow lg:flex lg:items-center lg:w-auto lg:text-right"
       v-show="showNav"
     >
-      <div class="text-sm lg:flex-grow">
+      <div class="text-sm lg:flex-grow bg-gray-100 px-5 pb-4 pt-1 mt-5 lg:bg-transparent lg:p-0 lg:m-0">
         <router-link to="/condolencia/criar">
           <a
-            class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 mr-4 font-bold text-base sm:text-lg md:text-md"
+            class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 md:ml-8 font-normal text-base sm:text-lg md:text-md"
           >
-            Publicar Condolência
+            Prestar condolência
           </a>
         </router-link>
 
         <router-link to="/condolencias">
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 mr-4 font-bold text-base sm:text-lg md:text-md"
+            class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 md:ml-8 font-normal text-base sm:text-lg md:text-md"
           >
-            Listagem de Condolências
+            Listagem de condolências
           </a>
         </router-link>
       </div>

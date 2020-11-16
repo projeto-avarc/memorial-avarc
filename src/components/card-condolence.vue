@@ -31,7 +31,7 @@
         <!-- <div class="text-gray-600">erinlindford@example.com</div> -->
 
         <div
-          class="text-blue-500 text-right text-sm mt-2"
+          class="text-blue-500 text-right text-sm mt-2 cursor-pointer"
           @click="openModal(condolencia)"
         >
           ler depoimento

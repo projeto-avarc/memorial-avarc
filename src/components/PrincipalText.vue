@@ -1,16 +1,16 @@
 <template>
-  <div class="title mr-4 ml-4 md:mr-1 md:ml-1">
+  <div class="title my-10 md:mt-16 md:mb-20">
     <p
       class="text-base md:text-2xl lg:text-4xl xl:text-5xl sm:text-center lg:text-left text-blue-900"
     >
       Memorial às vítimas
     </p>
     <p
-      class="text-base font-bold md:text-2xl lg:text-4xl xl:text-5xl sm:text-center lg:text-left text-blue-900"
+      class="leading-7 text-base font-bold md:text-2xl lg:text-4xl xl:text-5xl sm:text-center lg:text-left text-blue-900"
     >
       do Covid-19
     </p>
-    <p class="text-base md:text-lg sm:text-justify lg:text-left text-blue-900">
+    <p class="text-base md:text-lg sm:text-justify lg:text-left text-blue-900 mt-10">
       Deixe uma mensagem para <br />
       um amigo ou ente querido, <br />
       e eternize esse sentimento.

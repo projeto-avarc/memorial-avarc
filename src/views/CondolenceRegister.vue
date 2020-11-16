@@ -1,11 +1,12 @@
 <template>
-  <form
-    class="form bg-white p-6 my-10 relative"
+  <div class="container px-2">
+    <form
+    class="form bg-white  px-8 md:px-12 py-6 relative shadow-2xl rounded"
     v-on:submit.prevent="submitForm"
   >
     <div
       class="icon bg-blue-600 text-white w-6 h-6 absolute flex items-center justify-center p-5"
-      style="left:-40px"
+      style="left:-20px"
     >
       <i
         class="far fa-fw text-2xl"
@@ -272,15 +273,15 @@
           >
             <select v-model="condolance.status_message" id="grid-status">
               <option value="public">Pública</option>
-              <option value="parcialmente_publica"
+              <option value="partially_public"
                 >Parcialmente pública - Será relevado o seu conteúdo e autoria
                 daqui dez anos</option
               >
-              <option value="apenas_mensagem"
+              <option value="only_message"
                 >Sigilosa - Somente a condolência será colocado na cápsula do
                 tempo sem identificação de sua autoria</option
               >
-              <option value="sigilosa">Sigilosa</option>
+              <option value="private">Sigilosa</option>
             </select>
             <div
               class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
@@ -351,6 +352,7 @@
       />
     </div>
   </form>
+  </div>
 </template>
 
 <script>
