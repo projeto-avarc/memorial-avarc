@@ -70,9 +70,6 @@
             id="cpf"
             name="cpf"
             class="form-control  border "
-            :class="{
-              'border-red-700': submitted && $v.condolance.honored.cpf.$error,
-            }"
             v-mask="'###.###.###.##'"
           />
         </div>
@@ -196,16 +193,7 @@
             name="name"
             class="form-control  border "
             v-mask="'###.###.###.##'"
-            :class="{
-              'border-red-700': submitted && $v.condolance.honoring.cpf.$error,
-            }"
           />
-          <span
-            v-if="submitted && !$v.condolance.honoring.first_name.required"
-            class="invalid-feedback text-red-700"
-          >
-            Documento é obrigatório
-          </span>
         </div>
       </div>
 
@@ -241,6 +229,7 @@
           </label>
           <div class="relative form-control border">
             <select v-model="condolance.honoring.feeling" id="grid-feeling">
+              <option value="nao_informar" selected>Não quero informar</option>
               <option value="saudades" selected>Saudades</option>
               <option value="inconformismo">Inconformismo</option>
               <option value="fe">Fé</option>
@@ -302,7 +291,7 @@
 
       <div class="flex space-x-5 mt-3">
         <div class="form-group p-2 w-full">
-          <label for="name">Condolência </label>
+          <label for="name">Condolência* </label>
           <textarea
             name="message"
             id="message"
@@ -311,6 +300,10 @@
             placeholder=" Escrever minha condolência"
             v-model="condolance.message"
             class="border p-2 mt-3 w-full"
+            :class="{
+              'border-red-700':
+                submitted && $v.condolance.message.$error,
+            }"
           ></textarea>
         </div>
       </div>
@@ -358,7 +351,7 @@
 <script>
 // import Button from "@/components/Button.vue";
 import axios from "axios";
-import { required, email, minLength } from "vuelidate/lib/validators";
+import { required, email, /*minLength*/ } from "vuelidate/lib/validators";
 export default {
   name: "condolenceRegister",
   data() {
@@ -383,7 +376,7 @@ export default {
           cpf: "",
           rg: "",
           email: "",
-          feeling: "",
+          feeling: null,
         },
       },
       submitted: false,
@@ -393,7 +386,7 @@ export default {
   validations: {
     condolance: {
       status_message: { required },
-      message: { required, minLength: minLength(150) },
+      message: { required, /*minLength: minLength(150)*/ },
       privacy_policy: { required },
       honored: {
         first_name: { required },
@@ -408,7 +401,7 @@ export default {
       honoring: {
         first_name: { required },
         last_name: { required },
-        cpf: { required },
+        cpf: {},
         rg: {},
         email: { required, email },
         feeling: {},
@@ -423,7 +416,7 @@ export default {
         return;
       }
       axios
-        .post("http://localhost:1337/condolencias", this.condolance)
+        .post("http://localhost:1337/condolences", this.condolance)
         .then(() => {
           this.$router.push("/condolencia/sucesso");
         });

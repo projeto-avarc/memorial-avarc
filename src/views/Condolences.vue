@@ -43,84 +43,7 @@ export default {
   },
   data() {
     return {
-      condolences: [
-        {
-          status_message: "public",
-          message:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rhoncus ligula vel risus aliquam, hendrerit pretium orci malesuada. Fusce molestie consectetur turpis, eget tincidunt odio hendrerit vel. Praesent porta lacus velit. Quisque finibus neque eget mattis lacinia. Donec commodo lobortis urna, id maximus urna blandit vel. Aliquam congue elementum neque, ut aliquet lorem tempor quis. Suspendisse tincidunt consequat leo, vel pharetra erat sodales eget. Etiam nulla nisl, malesuada id mauris gravida, ullamcorper pulvinar enim. Ut condimentum libero et porttitor pharetra. Proin iaculis iaculis augue, sed viverra leo elementum ac. Aliquam ac nisl posuere, ornare ex nec, egestas sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc vel malesuada diam.",
-          privacy_policy: true,
-          honored: {
-            first_name: "Jair",
-            last_name: "Rodrigues",
-            cpf: "999.999.999-99",
-            rg: "99.999.999-9",
-            address_street: "R. Augusta",
-            address_city: "São Paulo",
-            address_state: "São Paulo",
-            picture: "../assets/images/person-male.png",
-            birth_date: "1985-07-02",
-          },
-          honoring: {
-            first_name: "João",
-            last_name: "Silva",
-            cpf: "999.999.999-99",
-            rg: "99.999.999-9",
-            email: "teste@teste.com",
-            feeling: "sentimento_01",
-          },
-        },
-        {
-          status_message: "public",
-          message:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rhoncus ligula vel risus aliquam, hendrerit pretium orci malesuada. Fusce molestie consectetur turpis, eget tincidunt odio hendrerit vel. Praesent porta lacus velit. Quisque finibus neque eget mattis lacinia. Donec commodo lobortis urna, id maximus urna blandit vel. Aliquam congue elementum neque, ut aliquet lorem tempor quis. Suspendisse tincidunt consequat leo, vel pharetra erat sodales eget. Etiam nulla nisl, malesuada id mauris gravida, ullamcorper pulvinar enim. Ut condimentum libero et porttitor pharetra. Proin iaculis iaculis augue, sed viverra leo elementum ac. Aliquam ac nisl posuere, ornare ex nec, egestas sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc vel malesuada diam.",
-          privacy_policy: true,
-          honored: {
-            first_name: "Hebe",
-            last_name: "Camargo",
-            cpf: "999.999.999-99",
-            rg: "99.999.999-9",
-            address_street: "R. dos bobos",
-            address_city: "São Paulo",
-            address_state: "São Paulo",
-            picture: "../assets/images/person-male.png",
-            birth_date: "1950-11-25",
-          },
-          honoring: {
-            first_name: "João",
-            last_name: "Silva",
-            cpf: "999.999.999-99",
-            rg: "99.999.999-9",
-            email: "teste@teste.com",
-            feeling: "sentimento_01",
-          },
-        },
-        {
-          status_message: "public",
-          message:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rhoncus ligula vel risus aliquam, hendrerit pretium orci malesuada. Fusce molestie consectetur turpis, eget tincidunt odio hendrerit vel. Praesent porta lacus velit. Quisque finibus neque eget mattis lacinia. Donec commodo lobortis urna, id maximus urna blandit vel. Aliquam congue elementum neque, ut aliquet lorem tempor quis. Suspendisse tincidunt consequat leo, vel pharetra erat sodales eget. Etiam nulla nisl, malesuada id mauris gravida, ullamcorper pulvinar enim. Ut condimentum libero et porttitor pharetra. Proin iaculis iaculis augue, sed viverra leo elementum ac. Aliquam ac nisl posuere, ornare ex nec, egestas sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc vel malesuada diam.",
-          privacy_policy: true,
-          honored: {
-            first_name: "Stan",
-            last_name: "Lee",
-            cpf: "999.999.999-99",
-            rg: "99.999.999-9",
-            address_street: "R. dos bobos",
-            address_city: "São Paulo",
-            address_state: "São Paulo",
-            picture: "../assets/images/stan-lee.jpg",
-            birth_date: "1945-11-25",
-          },
-          honoring: {
-            first_name: "João",
-            last_name: "Silva",
-            cpf: "999.999.999-99",
-            rg: "99.999.999-9",
-            email: "teste@teste.com",
-            feeling: "sentimento_01",
-          },
-        },
-      ],
-
+      condolences: [],
       condolences_count: 1,
       pessoa: null,
       showModal: false,
@@ -128,11 +51,11 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:1337/condolencias")
+      .get("http://localhost:1337/condolences")
       .then((response) => (this.condolences = response.data));
 
     axios
-      .get("http://localhost:1337/condolencias/count")
+      .get("http://localhost:1337/condolences/count")
       .then((response) => (this.condolences_count = response.data));
   },
   methods: {},
