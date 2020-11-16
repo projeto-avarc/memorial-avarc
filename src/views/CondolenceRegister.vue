@@ -432,6 +432,7 @@ export default {
       this.createImage(files[0]);
     },
     createImage(file) {
+      // eslint-disable-next-line
       const image = new Image();
       const reader = new FileReader();
       const vm = this;
