@@ -76,18 +76,6 @@
           />
         </div>
       </div>
-      <div class="form-group p-2 w-1/3">
-        <label for="name">CPF ou RG</label>
-        <input
-          type="text"
-          v-model="condolence.cpf"
-          id="name"
-          name="name"
-          class="form-control  border "
-          :class="{ 'border-red-700': submitted && $v.condolence.cpf.$error }"
-        />
-      </div>
-    </div>
 
       <div class="md:flex md:space-x-5 mt-3">
         <div class="p-2 w-full  md:w-1/3">
@@ -435,7 +423,7 @@ export default {
         return;
       }
       axios
-        .post("http://localhost:1337/condolencias", this.condolence)
+        .post("http://localhost:1337/condolencias", this.condolance)
         .then(() => {
           this.$router.push("/condolencia/sucesso");
         });
@@ -452,12 +440,12 @@ export default {
       const vm = this;
 
       reader.onload = (e) => {
-        vm.condolence.picture = e.target.result;
+        vm.condolance.honored.picture = e.target.result;
       };
       reader.readAsDataURL(file);
     },
     removeImage: function() {
-      this.condolence.picture = "";
+      this.condolance.honored.picture = "";
     },
     changeForm() {
       this.submitForm();
