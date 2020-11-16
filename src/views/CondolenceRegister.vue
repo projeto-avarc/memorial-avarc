@@ -76,6 +76,18 @@
           />
         </div>
       </div>
+      <div class="form-group p-2 w-1/3">
+        <label for="name">CPF ou RG</label>
+        <input
+          type="text"
+          v-model="condolence.cpf"
+          id="name"
+          name="name"
+          class="form-control  border "
+          :class="{ 'border-red-700': submitted && $v.condolence.cpf.$error }"
+        />
+      </div>
+    </div>
 
       <div class="md:flex md:space-x-5 mt-3">
         <div class="p-2 w-full  md:w-1/3">

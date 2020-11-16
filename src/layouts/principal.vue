@@ -2,7 +2,7 @@
   <div class="main">
     <Navbar></Navbar>
     <div class="container mx-auto">
-      <PrincipalText></PrincipalText>
+      <!-- <PrincipalText></PrincipalText> -->
       <router-view></router-view>
     </div>
   </div>
@@ -10,12 +10,12 @@
 
 <script>
 import Navbar from "@/components/page-navbar.vue";
-import PrincipalText from "@/components/PrincipalText.vue";
+// import PrincipalText from "@/components/PrincipalText.vue";
 
 export default {
   components: {
     Navbar,
-    PrincipalText,
+    // PrincipalText,
   },
   state: {
     navigation: {
