@@ -76,18 +76,6 @@
           />
         </div>
       </div>
-      <div class="form-group p-2 w-1/3">
-        <label for="name">CPF ou RG</label>
-        <input
-          type="text"
-          v-model="condolence.cpf"
-          id="name"
-          name="name"
-          class="form-control  border "
-          :class="{ 'border-red-700': submitted && $v.condolence.cpf.$error }"
-        />
-      </div>
-    </div>
 
       <div class="md:flex md:space-x-5 mt-3">
         <div class="p-2 w-full  md:w-1/3">
@@ -369,7 +357,6 @@
 // import Button from "@/components/Button.vue";
 import axios from "axios";
 import { required, email, minLength } from "vuelidate/lib/validators";
-
 export default {
   name: "condolenceRegister",
   data() {
@@ -426,7 +413,6 @@ export default {
       },
     },
   },
-
   methods: {
     submitForm() {
       this.submitted = true;
@@ -440,7 +426,6 @@ export default {
           this.$router.push("/condolencia/sucesso");
         });
     },
-
     onFileChange(e) {
       const files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
@@ -450,7 +435,6 @@ export default {
       const image = new Image();
       const reader = new FileReader();
       const vm = this;
-
       reader.onload = (e) => {
         vm.condolence.picture = e.target.result;
       };
@@ -478,10 +462,8 @@ export default {
   left: 100%;
   top: 0;
 }
-
 .form {
   text-align: left;
-
   @apply mb-10 w-full;
   label {
     @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
