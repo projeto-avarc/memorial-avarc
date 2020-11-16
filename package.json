@@ -11,8 +11,10 @@
     "axios": "^0.20.0",
     "core-js": "^2.6.5",
     "tailwindcss": "^1.9.4",
+    "v-mask": "^2.2.3",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vue-the-mask": "^0.11.1",
     "vuelidate": "^0.7.6",
     "vuex": "^3.0.1"
   },

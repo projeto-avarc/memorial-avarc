@@ -1,7 +1,7 @@
 <template>
-  <div class="title sm:float-none lg:float-left container mx-auto">
+  <div class="title mr-4 ml-4 md:mr-1 md:ml-1">
     <p
-      class=" text-base md:text-2xl lg:text-4xl xl:text-5xl sm:text-center lg:text-left text-blue-900"
+      class="text-base md:text-2xl lg:text-4xl xl:text-5xl sm:text-center lg:text-left text-blue-900"
     >
       Memorial às vítimas
     </p>
@@ -21,7 +21,6 @@
         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-4"
       ></Button>
     </router-link>
-    <router-view></router-view>
   </div>
 </template>
 

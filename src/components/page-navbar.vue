@@ -1,14 +1,16 @@
 <template>
   <nav class="flex items-center justify-between flex-wrap bg-white p-4">
-    <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <img
-        src="../assets/images/logo_memorial_avarc.svg"
-        alt="Logo Memorial Avarc"
-        style="width: 160px;"
-      />
-    </div>
+    <router-link to="/">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <img
+          src="../assets/images/logo_memorial_avarc.svg"
+          alt="Logo Memorial Avarc"
+          style="width: 160px;"
+        /></div
+    ></router-link>
     <div class="block lg:hidden">
       <button
+        @click="changeNav"
         class="flex items-center px-3 py-2 border rounded text-blue-900 border-blue-900 hover:text-blue-600 hover:border-blue-600"
       >
         <svg
@@ -21,7 +23,10 @@
         </svg>
       </button>
     </div>
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div
+      class="w-full block flex-grow lg:flex lg:items-center lg:w-auto"
+      v-show="showNav"
+    >
       <div class="text-sm lg:flex-grow">
         <router-link to="/condolencia/criar">
           <a
@@ -39,25 +44,33 @@
             Listagem de Condolências
           </a>
         </router-link>
-        <router-link to="#">
-          <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 font-bold text-base sm:text-lg md:text-md"
-          >
-            Fale Conosco
-          </a>
-        </router-link>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      showNav: true,
+    };
+  },
+  methods: {
+    changeNav() {
+      this.showNav = !this.showNav;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
 nav {
   box-shadow: 0px 22px 50px 25px #fff;
+}
+@media (max-width: 640px) {
+  nav {
+    box-shadow: 0px 50px 50px 50px #fff;
+  }
 }
 </style>
