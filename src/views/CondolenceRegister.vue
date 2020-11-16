@@ -421,7 +421,7 @@ export default {
         return;
       }
       axios
-        .post("http://localhost:1337/condolencias", this.condolence)
+        .post("http://localhost:1337/condolencias", this.condolance)
         .then(() => {
           this.$router.push("/condolencia/sucesso");
         });
@@ -436,12 +436,12 @@ export default {
       const reader = new FileReader();
       const vm = this;
       reader.onload = (e) => {
-        vm.condolence.picture = e.target.result;
+        vm.condolance.honored.picture = e.target.result;
       };
       reader.readAsDataURL(file);
     },
     removeImage: function() {
-      this.condolence.picture = "";
+      this.condolance.honored.picture = "";
     },
     changeForm() {
       this.submitForm();
