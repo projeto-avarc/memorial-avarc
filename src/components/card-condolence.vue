@@ -1,49 +1,48 @@
 <template>
   <div>
+    <InformationModal
+      v-if="showModal === true"
+      :person="pessoa"
+      @clicked="onClickChild"
+    >
+    </InformationModal>
 
-      <div class="max-w-sm w-full -mx-2 lg:max-w-full lg:flex border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r">
-        <div
-          class="sm:w-auto bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-          style="background-image: url('../assets/images/person-male.png')"
-          title="Woman holding a mug"
-        >
-          <img src="../assets/images/person-male.png" />
+    <div class="flex justify-center bg-white rounded-lg p-6 border">
+      <img
+        class="h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6"
+        src="../assets/images/person-male.png"
+      />
+
+      <div class="text-center md:text-left">
+        <h2 class="text-lg font-bold">
+          {{
+            condolencia.honored.first_name + " " + condolencia.honored.last_name
+          }}
+        </h2>
+
+        <div class="text-blue-500">
+          {{
+            condolencia.honored.address_city +
+              "/" +
+              condolencia.honored.address_state
+          }}
         </div>
-        <div
-          class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 pr-12 flex flex-col justify-between leading-normal"
-        >
-          <div class="mb-8">
-            <div class="sm:text-center text-gray-900 font-bold text-xl mb-2">
-              {{
-                condolencia.honored.first_name +
-                " " +
-                condolencia.honored.last_name
-              }}
-            </div>
-            <p class="sm:text-center text-gray-700 text-base">
-              {{
-                condolencia.honored.address_city +
-                "/" +
-                condolencia.honored.address_state
-              }}
-            </p>
-          </div>
 
-          <div class="mb-2 sm:text-center">
-            <button @click="openModal(condolencia)">Ler depoimento</button>
-          </div>
+        <!-- <div class="text-gray-600">erinlindford@example.com</div> -->
+
+        <div
+          class="text-blue-500 text-right text-sm mt-2"
+          @click="openModal(condolencia)"
+        >
+          ler depoimento
         </div>
       </div>
-
-    <div v-if="showModal == true">
-      <information-modal :person=pessoa></information-modal>
     </div>
-
   </div>
 </template>
 
 <script>
-import InformationModal from '../components/information-modal.vue';
+import InformationModal from "./information-modal";
 
 export default {
   name: "card-condolence",
@@ -51,24 +50,26 @@ export default {
     condolencia: Object,
   },
   components: {
-    InformationModal
+    InformationModal,
+  },
+  data() {
+    return {
+      showModal: false,
+    };
   },
   methods: {
-      openModal(value) {
-      this.showModal = true;
-      console.log(value); // someValue
-      this.$emit('input', value);
+    openModal(value) {
+      this.showModal = !this.showModal;
+      this.$emit("input", value);
       this.pessoa = value;
     },
+
+    onClickChild(value) {
+      this.showModal = value;
+    },
   },
-  data(){
-    return {
-      showModal: false
-    }
-  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
