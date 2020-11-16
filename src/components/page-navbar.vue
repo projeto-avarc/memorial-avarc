@@ -1,6 +1,9 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap bg-white p-4">
-    <router-link to="/">
+  <nav>
+    <div class="container mx-auto">
+      <div class="flex items-center justify-between flex-wrap bg-white py-4">
+
+        <router-link to="/">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
         <img
           src="../assets/images/logo_memorial_avarc.svg"
@@ -46,6 +49,9 @@
         </router-link>
       </div>
     </div>
+
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -67,6 +73,7 @@ export default {
 <style scoped lang="scss">
 nav {
   box-shadow: 0px 22px 50px 25px #fff;
+  background-color: #fff;
 }
 @media (max-width: 640px) {
   nav {
