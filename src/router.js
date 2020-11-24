@@ -11,41 +11,37 @@ export default new Router({
     {
       path: "/",
       component: () =>
-        import(/* webpackChunkName: "layout" */ "@/layouts/principal.vue"),
-      children: [
-        {
-          path: "/condolencia/sucesso",
-          name: "CondolenceRegisterSuccess",
-          component: () => import("./views/CondolenceRegisterSuccess.vue"),
-        },
-        // {
-        //   path: "/",
-        //   name: "Home",
-        //   component: Home,
-        // },
-
-        {
-          path: "/condolencias/:id",
-          name: "Condolence",
-          component: () => import("./views/Condolence.vue"),
-        },
-        {
-          path: "/condolencias",
-          name: "Condolences",
-          component: () => import("./views/Condolences.vue"),
-        },
-        {
-          path: "/condolencia/criar",
-          name: "CondolenceRegister",
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () =>
-            import(
-              /* webpackChunkName: "about" */ "./views/CondolenceRegister.vue"
-            ),
-        },
-      ],
+        import(/* webpackChunkName: "layouts" */ "@/layouts/Main.vue"),
+        children: [
+          {
+            path: "/condolencia/sucesso",
+            name: "CondolenceRegisterSuccess",
+            component: () => import("./views/CondolenceRegisterSuccess.vue"),
+          },
+          // {
+          //   path: "/",
+          //   name: "Home",
+          //   component: Home,
+          // },
+          {
+            path: "/condolencias",
+            name: "Condolences",
+            component: () => import("./views/Condolences.vue"),
+          },
+          {
+            path: "/condolencia/criar",
+            name: "CondolenceRegister",
+            component: () =>
+              import(
+                "./views/CondolenceRegister.vue"
+              ),
+          },
+        ],
+    },
+    {
+      path: "/condolencias/:id",
+      name: "Condolence",
+      component: () => import("./layouts/Condolence.vue"),
     },
   ],
 });
