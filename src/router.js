@@ -24,11 +24,11 @@ export default new Router({
         //   component: Home,
         // },
 
-        // {
-        //   path: "/condolencia/:id",
-        //   name: "Condolence",
-        //   component: () => import("./views/Condolence.vue"),
-        // },
+        {
+          path: "/condolencias/:id",
+          name: "Condolence",
+          component: () => import("./views/Condolence.vue"),
+        },
         {
           path: "/condolencias",
           name: "Condolences",

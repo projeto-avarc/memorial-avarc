@@ -2,14 +2,12 @@
   <div class="container mx-auto form bg-white p-6 my-10 relative">
     <div
       class="icon bg-blue-600 text-white w-6 h-6 absolute flex items-center justify-center p-5"
-      style="left:-40px"
+      style="left: -40px"
     >
       <i class="fas fa-list fa-fw text-2xl"></i>
     </div>
 
-    <h3 class="text-2xl text-gray-900 font-semibold">
-      Condolências
-    </h3>
+    <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
     <hr />
 
     <div class="mb-4 mt-5 flex flex-wrap justify-center">
@@ -53,7 +51,6 @@ export default {
     axios
       .get("http://localhost:1337/condolences")
       .then((response) => (this.condolences = response.data));
-
     axios
       .get("http://localhost:1337/condolences/count")
       .then((response) => (this.condolences_count = response.data));

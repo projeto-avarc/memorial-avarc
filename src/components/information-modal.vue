@@ -37,6 +37,11 @@
           <br />
           <span class="text-white">com saudade.</span>
         </div>
+
+        <div class="flex justify-center">
+          <qrcode-vue :value="value" :size="size" level="H"></qrcode-vue>
+        </div>
+        
         <div class="h-20 flex items-center justify-center">
           <a href="#" class="text-white" @click="closeModal(false)">Fechar</a>
         </div>
@@ -46,16 +51,27 @@
 </template>
 
 <script>
+import QrcodeVue from 'qrcode.vue'
+
 export default {
   name: "InformationModal",
+  data() {
+    return {
+      value: 'http://localhost:8080/condolencias/1928374',
+      size: 150,
+    };
+  },
   props: {
     person: Object,
+  },
+  components: {
+    QrcodeVue,
   },
   methods: {
     closeModal(event) {
       this.$emit("clicked", event);
     },
-  },
+  }
 };
 </script>
 

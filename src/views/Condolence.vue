@@ -31,7 +31,7 @@ export default {
   },
   mounted () {
     axios
-      .get(`http://localhost:1337/condolencias/${ this.$route.params.id }`)
+      .get(`http://localhost:1337/condolences/${ this.$route.params.id }`)
       .then(response => (this.condolence = response.data))
   }
 }

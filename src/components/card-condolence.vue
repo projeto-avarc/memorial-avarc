@@ -30,12 +30,16 @@
 
         <!-- <div class="text-gray-600">erinlindford@example.com</div> -->
 
-        <div
+        <!-- <div
           class="text-blue-500 text-right text-sm mt-2 cursor-pointer"
           @click="openModal(condolencia)"
         >
           ler depoimento
-        </div>
+        </div> -->
+
+        <router-link class="text-blue-500 text-right text-sm mt-2 cursor-pointer mt-2 block underline" :to="`/condolencias/${condolencia.id}`">
+          Listagem de condolências
+        </router-link>
       </div>
     </div>
   </div>
