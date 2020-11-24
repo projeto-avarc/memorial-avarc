@@ -46,10 +46,10 @@
 </template>
 
 <script>
-import InformationModal from "./information-modal";
+import InformationModal from "./ModalContent";
 
 export default {
-  name: "card-condolence",
+  name: "CardCondolence",
   props: {
     condolencia: Object,
   },

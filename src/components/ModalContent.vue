@@ -1,5 +1,5 @@
 <template>
-  <!-- information-modal' é para desktop, para mobile só tirar ele -->
+  <!-- ModalContent' é para desktop, para mobile só tirar ele -->
   <div class="bg-30 modal">
     <div class="py-3 sm:max-w-xl sm:mx-auto">
       <div class="bg-blue-800 min-w-1xl flex flex-col rounded-xl shadow-lg">
@@ -77,7 +77,7 @@ export default {
 
 <style scoped lang="scss">
 //essa clase é para o modal desktop
-.information-modal {
+.ModalContent {
   position: absolute;
   left: 50%;
   top: 50%;

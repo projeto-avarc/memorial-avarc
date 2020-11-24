@@ -23,7 +23,7 @@
         v-bind:key="condolence.id"
         class="max-w-sm w-full lg:flex items-center mb-4 mr-3"
       >
-        <card-condolence :condolencia="condolence"></card-condolence>
+        <CardCondolence :condolencia="condolence"></CardCondolence>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
 
 <script>
 import axios from "axios";
-import CardCondolence from "../components/card-condolence.vue";
+import CardCondolence from "../components/CardCondolence.vue";
 
 export default {
   props: {},

@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <Navbar></Navbar>
+    <NavBar></NavBar>
     <div class="container mx-auto">
       <InfoHero></InfoHero>
       <router-view></router-view>
@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import Navbar from "@/components/page-navbar.vue";
+import NavBar from "@/components/NavBar.vue";
 import InfoHero from "@/components/InfoHero.vue";
 
 export default {
   components: {
-    Navbar,
+    NavBar,
     InfoHero,
   },
   state: {
