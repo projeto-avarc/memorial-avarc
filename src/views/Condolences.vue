@@ -1,43 +1,40 @@
 <template>
-  <div class="container mx-auto form bg-white p-6 my-10 relative">
-    <div
-      class="icon bg-blue-600 text-white w-6 h-6 absolute flex items-center justify-center p-5"
-      style="left: -40px"
-    >
-      <i class="fas fa-list fa-fw text-2xl"></i>
-    </div>
+  <div class="container px-2 mb-20">
+    <Jumbotron>
+      <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
+      <hr />
 
-    <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
-    <hr />
-
-    <div class="mb-4 mt-5 flex flex-wrap justify-center">
-      <h3
-        v-if="condolences_count <= 0"
-        class="text-2xl text-gray-900 font-semibold"
-      >
-        Listagem das condolências: <strong>Nenhum registro</strong>
-      </h3>
-      <div
-        v-else
-        v-for="condolence in condolences"
-        v-bind:key="condolence.id"
-        class="max-w-sm w-full lg:flex items-center mb-4 mr-3"
-      >
-        <CardCondolence :condolencia="condolence"></CardCondolence>
+      <div class="mb-4 mt-5 flex flex-wrap justify-center">
+        <h3
+          v-if="condolences_count <= 0"
+          class="text-2xl text-gray-900 font-semibold"
+        >
+          Listagem das condolências: <strong>Nenhum registro</strong>
+        </h3>
+        <div
+          v-else
+          v-for="condolence in condolences"
+          v-bind:key="condolence.id"
+          class="max-w-sm w-full lg:flex items-center mb-4 mr-3"
+        >
+          <CardCondolence :condolencia="condolence"></CardCondolence>
+        </div>
       </div>
-    </div>
+    </Jumbotron>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import CardCondolence from "../components/CardCondolence.vue";
+import axios from "axios"
+import CardCondolence from "@/components/CardCondolence"
+import Jumbotron from '@/components/Jumbotron'
 
 export default {
   props: {},
   name: "condolences",
   components: {
     CardCondolence,
+    Jumbotron,
   },
   data() {
     return {
@@ -60,14 +57,4 @@ export default {
 </script>
 
 <style lang="scss">
-.icon::after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-top: 23px solid transparent;
-  border-bottom: 17px solid transparent;
-  border-left: 12px solid #3182ce;
-  left: 100%;
-  top: 0;
-}
 </style>
