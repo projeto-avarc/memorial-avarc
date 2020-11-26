@@ -21,11 +21,11 @@
                 name="name"
                 :class="{
                   'border-red-700':
-                    submitted && $v.condolencia.vitima.nome.$error,
+                    warning && $v.condolencia.vitima.nome.$error,
                 }"
               />
               <span
-                v-if="submitted && !$v.condolencia.vitima.nome.required"
+                v-if="warning && !$v.condolencia.vitima.nome.required"
                 class="invalid-feedback text-red-700"
               >
                 Nome é obrigatório
@@ -41,11 +41,11 @@
                 name="vitima_lastname"
                 :class="{
                   'border-red-700':
-                    submitted && $v.condolencia.vitima.sobrenome.$error,
+                    warning && $v.condolencia.vitima.sobrenome.$error,
                 }"
               />
               <span
-                v-if="submitted && !$v.condolencia.vitima.sobrenome.required"
+                v-if="warning && !$v.condolencia.vitima.sobrenome.required"
                 class="invalid-feedback text-red-700"
               >
                 Sobrenome é obrigatório
@@ -84,7 +84,7 @@
                 name="vitima_adressstreet"
                 :class="{
                   'border-red-700':
-                    submitted && $v.condolencia.vitima.endereco_rua.$error,
+                    warning && $v.condolencia.vitima.endereco_rua.$error,
                 }"
               />
             </div>
@@ -98,7 +98,7 @@
                 name="vitima_adresscity"
                 :class="{
                   'border-red-700':
-                    submitted && $v.condolencia.vitima.endereco_cidade.$error,
+                    warning && $v.condolencia.vitima.endereco_cidade.$error,
                 }"
               />
             </div>
@@ -114,7 +114,7 @@
                 name="vitima_adressstate"
                 :class="{
                   'border-red-700':
-                    submitted && $v.condolencia.vitima.endereco_estado.$error,
+                    warning && $v.condolencia.vitima.endereco_estado.$error,
                 }"
               />
             </div>
@@ -132,7 +132,12 @@
                 />
               </div>
               <div v-if="condolencia.vitima.imagem" class="text-right block">
-                <button @click="removeImage" class="text-sm underline text-gray-900">Remover foto</button>
+                <button
+                  @click="removeImage"
+                  class="text-sm underline text-gray-900"
+                >
+                  Remover foto
+                </button>
               </div>
             </div>
           </div>
@@ -149,11 +154,11 @@
                 name="name"
                 :class="{
                   'border-red-700':
-                    submitted && $v.condolencia.pessoa.nome.$error,
+                    warning && $v.condolencia.pessoa.nome.$error,
                 }"
               />
               <span
-                v-if="submitted && !$v.condolencia.pessoa.nome.required"
+                v-if="warning && !$v.condolencia.pessoa.nome.required"
                 class="invalid-feedback text-red-700"
               >
                 Nome é obrigatório
@@ -169,11 +174,11 @@
                 name="lastname"
                 :class="{
                   'border-red-700':
-                    submitted && $v.condolencia.pessoa.sobrenome.$error,
+                    warning && $v.condolencia.pessoa.sobrenome.$error,
                 }"
               />
               <span
-                v-if="submitted && !$v.condolencia.pessoa.sobrenome.required"
+                v-if="warning && !$v.condolencia.pessoa.sobrenome.required"
                 class="invalid-feedback text-red-700"
               >
                 Sobrenome é obrigatório
@@ -240,7 +245,7 @@
               <div
                 class="relative border"
                 :class="{
-                  'border-red-700': submitted && $v.condolencia.status.$error,
+                  'border-red-700': warning && $v.condolencia.status.$error,
                 }"
               >
                 <select v-model="condolencia.status" id="grid-status">
@@ -282,17 +287,17 @@
                 name="email"
                 :class="{
                   'border-red-700':
-                    submitted && $v.condolencia.pessoa.email.$error,
+                    warning && $v.condolencia.pessoa.email.$error,
                 }"
               />
               <span
                 class="text-red-700"
-                v-if="submitted && !$v.condolencia.pessoa.email.required"
+                v-if="warning && !$v.condolencia.pessoa.email.required"
                 >E-mail é obrigatório</span
               >
               <span
                 class="text-red-700"
-                v-if="submitted && !$v.condolencia.pessoa.email.email"
+                v-if="warning && !$v.condolencia.pessoa.email.email"
                 >E-mail inválido</span
               >
             </div>
@@ -310,7 +315,7 @@
                 v-model="condolencia.texto"
                 class="border p-2 mt-3 w-full"
                 :class="{
-                  'border-red-700': submitted && $v.condolencia.texto.$error,
+                  'border-red-700': warning && $v.condolencia.texto.$error,
                 }"
               ></textarea>
             </div>
@@ -333,7 +338,7 @@
             type="button"
             value="Avançar"
             class="bg-blue-600 hover:bg-blue-500 text-white font-semibold p-3 w-full cursor-pointer rounded-sm"
-            @click="changeForm"
+            @click="goAhead"
           />
         </div>
 
@@ -350,7 +355,7 @@
               type="button"
               value="Voltar"
               class="bg-transparent underline cursor-pointer inline-block text-gray-700 text-sm font-bold mt-4"
-              @click="changeForm"
+              @click="goBack"
             />
           </div>
         </div>
@@ -375,7 +380,7 @@ export default {
       condolencia: {
         status: "public",
         texto: "",
-        politica_privacidade: true,
+        politica_privacidade: false,
         vitima: {
           nome: "",
           sobrenome: "",
@@ -395,7 +400,7 @@ export default {
           sentimento: "",
         },
       },
-      submitted: false,
+      warning: false,
       vitima: true,
     };
   },
@@ -426,17 +431,16 @@ export default {
   },
   methods: {
     submitForm() {
-      this.submitted = true;
+      this.warning = true;
       this.$v.$touch();
       if (this.$v.$invalid) {
         return;
       }
-      // axios
-      //   .post("http://localhost:1337/condolences", this.condolencia)
-      //   .then(() => {
-      //     this.$router.push("/condolencia/sucesso");
-      //   });
-      console.log(this.condolencia)
+      axios
+        .post("http://avarcsp-001-site1.gtempurl.com/api/Mensagems", this.condolencia)
+        .then(() => {
+          this.$router.push("/condolencia/sucesso");
+        });
     },
     addProfileImage(e) {
       const files = e.target.files || e.dataTransfer.files;
@@ -444,8 +448,6 @@ export default {
       if (!files.length) return;
       else if (regex.test(files[0].name.toLowerCase())) {
         this.createBase64Image(files[0]);
-      } else {
-
       }
     },
     createBase64Image(fileObject) {
@@ -458,22 +460,18 @@ export default {
     removeImage: function() {
       this.condolencia.vitima.imagem = ""
     },
-    changeForm() {
-      this.submitForm();
+    goAhead() {
+      this.$v.$touch();
+      if (this.$v.condolencia.vitima.$invalid) {
+        this.warning = true;
+        return;
+      }
+      this.warning = false;
       this.vitima = !this.vitima;
     },
-    // passForm() {
-    //   // eslint-disable-next-line
-    //   console.log(this.$v)
-
-    //   // this.$v.$touch();
-    //   // if (this.$v.$invalid) {
-    //   //   this.submitted = true;
-    //   //   return;
-    //   // }
-    //   // // eslint-disable-next-line
-    //   // console.log('pode ir')
-    // }
+    goBack() {
+      this.vitima = !this.vitima;
+    }
   },
 };
 </script>
@@ -485,7 +483,7 @@ export default {
   label {
     @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
   }
-  input:not([type='checkbox']):not([type='button']):not([type='submit']),
+  input:not([type="checkbox"]):not([type="button"]):not([type="submit"]),
   textarea {
     @apply border appearance-none block w-full py-3 px-4 leading-tight;
     min-height: 45px;
