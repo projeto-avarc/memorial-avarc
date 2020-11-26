@@ -241,24 +241,25 @@
             </div>
 
             <div class="p-2 w-full md:w-1/3">
-              <label for="grid-status">A minha mensagem é </label>
+              <label for="grid-privacidade">A minha mensagem é </label>
               <div
                 class="relative border"
                 :class="{
-                  'border-red-700': warning && $v.condolencia.status.$error,
+                  'border-red-700':
+                    warning && $v.condolencia.privacidade.$error,
                 }"
               >
-                <select v-model="condolencia.status" id="grid-status">
-                  <option value="public">Pública</option>
-                  <option value="partially_public">
+                <select v-model.number="condolencia.privacidade" id="grid-privacidade">
+                  <option value="4">Pública</option>
+                  <option value="3">
                     Parcialmente pública - Será relevado o seu conteúdo e
                     autoria daqui dez anos
                   </option>
-                  <option value="only_message">
+                  <option value="2">
                     Sigilosa - Somente a condolência será colocado na cápsula do
                     tempo sem identificação de sua autoria
                   </option>
-                  <option value="private">Sigilosa</option>
+                  <option value="1">Sigilosa</option>
                 </select>
                 <div
                   class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
@@ -378,7 +379,7 @@ export default {
   data() {
     return {
       condolencia: {
-        status: "public",
+        privacidade: 4,
         texto: "",
         politica_privacidade: false,
         vitima: {
@@ -406,7 +407,7 @@ export default {
   },
   validations: {
     condolencia: {
-      status: { required },
+      privacidade: { required },
       texto: { required },
       politica_privacidade: { required },
       vitima: {
@@ -433,14 +434,19 @@ export default {
     submitForm() {
       this.warning = true;
       this.$v.$touch();
+
       if (this.$v.$invalid) {
         return;
       }
+      
       axios
         .post("http://avarcsp-001-site1.gtempurl.com/api/Mensagems", this.condolencia)
         .then(() => {
           this.$router.push("/condolencia/sucesso");
-        });
+        })
+        .catch(err => {
+          return new Error(err.message)
+        })
     },
     addProfileImage(e) {
       const files = e.target.files || e.dataTransfer.files;
@@ -453,7 +459,7 @@ export default {
     createBase64Image(fileObject) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        this.condolencia.vitima.imagem = e.target.result;
+        this.condolencia.vitima.imagem = e.target.result.split(',')[1];
       };
       reader.readAsDataURL(fileObject);
     },

@@ -95,7 +95,6 @@ export default {
     }
   },
   mounted () {
-    console.log(window.location.href)
     axios
       .get(`http://localhost:1337/condolences/${ this.$route.params.id }`)
       .then(response => (this.condolence = response.data))
