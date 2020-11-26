@@ -4,7 +4,7 @@
       <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
       <hr />
 
-      <div class="mb-4 mt-5 grid grid-cols-3 gap-4">
+      <div class="mb-4 mt-5 sm:grid sm:grid-cols-3 sm:gap-4">
         <p
           v-if="condolences.length <= 0"
           class="text-xl text-gray-900"

@@ -362,6 +362,12 @@
         </div>
       </form>
     </Jumbotron>
+    <loading 
+      :active.sync="isLoading" 
+      :can-cancel="true" 
+      :on-cancel="onCancel"
+      :is-full-page="fullPage">
+    </loading>
   </div>
 </template>
 
@@ -371,10 +377,16 @@ import axios from "axios"
 import { required, email, /*minLength*/ } from "vuelidate/lib/validators"
 import Jumbotron from '@/components/Jumbotron'
 
+// Import component
+import Loading from 'vue-loading-overlay';
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
+
 export default {
   name: "condolenceRegister",
   components: {
     Jumbotron,
+    Loading
   },
   data() {
     return {
@@ -401,6 +413,8 @@ export default {
           sentimento: "",
         },
       },
+      isLoading: false,
+      fullPage: true,
       warning: false,
       vitima: true,
     };
@@ -439,12 +453,12 @@ export default {
         return;
       }
       
-      document.body.style.cursor = "progress"
+      this.isLoading = true;
 
       axios
         .post("https://www.opememorial.net/api/Mensagems", this.condolencia)
         .then(() => {
-          document.body.style.cursor = "default"
+          this.isLoading = false;
           this.$router.push("/condolencia/sucesso");
         })
         .catch(err => {
@@ -480,7 +494,8 @@ export default {
     },
     goBack() {
       this.vitima = !this.vitima;
-    }
+    },
+    onCancel() {}
   },
 };
 </script>
