@@ -6,7 +6,7 @@
 
       <div class="mb-4 mt-5 grid grid-cols-3 gap-4">
         <p
-          v-if="!condolences_exist"
+          v-if="condolences.length <= 0"
           class="text-xl text-gray-900"
         >
           Nenhum registro encontrado
@@ -38,14 +38,13 @@ export default {
   data() {
     return {
       condolences: [],
-      condolences_exist: true,
       pessoa: null,
       showModal: false,
     };
   },
   mounted() {
     axios
-      .get("http://avarcsp-001-site1.gtempurl.com/api/Mensagems/status?status=Aprovado")
+      .get("https://www.opememorial.net/api/Mensagems/status?status=Aprovado")
       .then((response) => (this.condolences = response.data));
   },
   methods: {},

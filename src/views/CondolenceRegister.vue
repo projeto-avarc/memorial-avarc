@@ -439,9 +439,12 @@ export default {
         return;
       }
       
+      document.body.style.cursor = "progress"
+
       axios
-        .post("http://avarcsp-001-site1.gtempurl.com/api/Mensagems", this.condolencia)
+        .post("https://www.opememorial.net/api/Mensagems", this.condolencia)
         .then(() => {
+          document.body.style.cursor = "default"
           this.$router.push("/condolencia/sucesso");
         })
         .catch(err => {

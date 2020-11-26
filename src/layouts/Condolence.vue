@@ -2,8 +2,8 @@
   <div>
     <NavBar class="shadow-sm"></NavBar>
     <div class="container mx-auto max-w-screen-md">
+        <!-- v-if="condolencia" -->
       <div
-        v-if="condolence"
         class="box"
       >
 
@@ -11,29 +11,36 @@
           <div
             class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
           >
-            <img class="profile" src="../assets/images/person-male.png" />
-            <!-- <img :src="condolence.honored.picture"/>  -->
+            <span 
+              v-if="condolencia.vitima.imagem"
+              class="rounded-full mx-auto md:mx-0 md:mr-6 picture"
+              :style="{'background-image': `url(data:image/jpeg;base64,${condolencia.vitima.imagem})`}">
+            </span>
+            <span 
+              v-else
+              class="rounded-full mx-auto md:mx-0 md:mr-6 picture">
+            </span>
           </div>
-          <div class="px-2 py-5 text-center">
-            <h4 class=" font-semibold text-right">
+          <div class="px-2 py-5 text-center md:ml-12">
+            <h4 class="text-xl font-semibold text-right">
               {{
-                condolence.honored.first_name +
+                condolencia.vitima.nome +
                 " " +
-                condolence.honored.last_name
+                condolencia.vitima.sobrenome
               }}
             </h4>
             <p
               class="text-white font-semibold text-right text-sm"
-              v-if="condolence.honored.address_city || condolence.honored.address_state"
+              v-if="condolencia.vitima.endereco_cidade || condolencia.vitima.endereco_estado"
             >
               {{`
                 ${(() => {
-                  if (condolence.honored.address_city && condolence.honored.address_state) {
-                    return condolence.honored.address_city + "/" + condolence.honored.address_state
-                  } else if (condolence.honored.address_city) {
-                    return condolence.honored.address_city
+                  if (condolencia.vitima.endereco_cidade && condolencia.vitima.endereco_estado) {
+                    return condolencia.vitima.endereco_cidade + "/" + condolencia.vitima.endereco_estado
+                  } else if (condolencia.vitima.endereco_cidade) {
+                    return condolencia.vitima.endereco_cidade
                   } else {
-                    return condolence.honored.address_state
+                    return condolencia.vitima.endereco_estado
                   }
                 })()}
               `}}
@@ -43,16 +50,16 @@
 
         <div class="bg-blue-800 w-full flex flex-col items-center">
           <div class="py-10 flex flex-col items-center space-y-3">
-            <span>{{ condolence.message }}</span>
+            <span>{{ condolencia.texto }}</span>
           </div>
         </div>
         <div class="text-right py-10 ">
           <span
             >Por
             <strong>{{
-              condolence.honoring.first_name +
+              condolencia.pessoa.nome +
               " " +
-              condolence.honoring.last_name
+              condolencia.pessoa.sobrenome
             }}</strong></span
           >
           <span class="text-sm block">com saudade.</span>
@@ -63,9 +70,9 @@
         </div>
           <p class="text-center mt-4 text-sm">{{value}}</p>
       </div>
-      <div v-else class="box">
+      <!-- <div v-else class="box">
         <p class=" text-xl">Condolência não encontrada!</p>
-      </div>
+      </div> -->
       <div class="text-left">
         <router-link
           to="/condolencias"
@@ -90,21 +97,27 @@ export default {
   },
   data () {
     return {
-      condolence: null,
+      condolencia: null,
       value: window.location.href,
     }
   },
   mounted () {
     axios
-      .get(`http://localhost:1337/condolences/${ this.$route.params.id }`)
-      .then(response => (this.condolence = response.data))
+      .get(`https://www.opememorial.net/api/Mensagems/id?id=${ this.$route.params.id }`)
+      .then(response => (this.condolencia = response.data))
   }
 }
 </script>
 
 <style scoped lang="scss">
-.profile {
-  max-width: 160px;
+.picture {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../assets/images/person-male.png);
+  display: inline-block;
+  width: 150px;
+  height: 150px;
 }
 .box {
   @apply my-12 bg-blue-800 flex flex-col rounded-xl shadow-2xl py-16 px-10 text-lg text-white;
