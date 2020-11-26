@@ -13,11 +13,11 @@
         <div v-show="vitima">
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
-              <label for="name">Nome*</label>
+              <label for="vitima_name">Nome*</label>
               <input
                 type="text"
                 v-model="condolencia.vitima.nome"
-                id="name"
+                id="vitima_name"
                 name="name"
                 :class="{
                   'border-red-700':
@@ -33,12 +33,12 @@
             </div>
 
             <div class="p-2 w-full md:w-1/3">
-              <label for="lastname">Sobrenome*</label>
+              <label for="vitima_lastname">Sobrenome*</label>
               <input
                 type="text"
                 v-model="condolencia.vitima.sobrenome"
-                id="lastname"
-                name="lastname"
+                id="vitima_lastname"
+                name="vitima_lastname"
                 :class="{
                   'border-red-700':
                     submitted && $v.condolencia.vitima.sobrenome.$error,
@@ -52,12 +52,12 @@
               </span>
             </div>
             <div class="p-2 w-full md:w-1/3">
-              <label for="cpf">CPF</label>
+              <label for="vitima_cpf">CPF</label>
               <input
                 type="text"
                 v-model="condolencia.vitima.cpf"
-                id="cpf"
-                name="cpf"
+                id="vitima_cpf"
+                name="vitima_cpf"
                 v-mask="'###.###.###.##'"
               />
             </div>
@@ -65,23 +65,23 @@
 
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
-              <label for="cpf">RG</label>
+              <label for="vitima_rg">RG</label>
               <input
                 type="text"
-                v-model="condolencia.vitima.cpf"
-                id="cpf"
-                name="cpf"
-                v-mask="'###.###.###.##'"
+                v-model="condolencia.vitima.rg"
+                id="vitima_rg"
+                name="vitima_rg"
+                v-mask="'##.###.###-#'"
               />
             </div>
 
             <div class="p-2 w-full md:w-1/3">
-              <label for="adressstreet">Endereço</label>
+              <label for="vitima_adressstreet">Endereço</label>
               <input
                 type="text"
                 v-model="condolencia.vitima.endereco_rua"
-                id="adressstreet"
-                name="adressstreet"
+                id="vitima_adressstreet"
+                name="vitima_adressstreet"
                 :class="{
                   'border-red-700':
                     submitted && $v.condolencia.vitima.endereco_rua.$error,
@@ -90,12 +90,12 @@
             </div>
 
             <div class="p-2 w-full md:w-1/3">
-              <label for="adresscity">Cidade</label>
+              <label for="vitima_adresscity">Cidade</label>
               <input
                 type="text"
                 v-model="condolencia.vitima.endereco_cidade"
-                id="adresscity"
-                name="adresscity"
+                id="vitima_adresscity"
+                name="vitima_adresscity"
                 :class="{
                   'border-red-700':
                     submitted && $v.condolencia.vitima.endereco_cidade.$error,
@@ -106,12 +106,12 @@
 
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
-              <label for="adressstate">Estado</label>
+              <label for="vitima_adressstate">Estado</label>
               <input
                 type="text"
                 v-model="condolencia.vitima.endereco_estado"
-                id="adressstate"
-                name="adressstate"
+                id="vitima_adressstate"
+                name="vitima_adressstate"
                 :class="{
                   'border-red-700':
                     submitted && $v.condolencia.vitima.endereco_estado.$error,
@@ -121,9 +121,10 @@
 
             <div class="form-group p-2 w-full md:w-2/3">
               <div>
-                <label for="imagem">Enviar foto</label>
+                <label for="vitima_imagem">Enviar foto</label>
                 <input
-                  id="imagem"
+                  id="vitima_imagem"
+                  name="vitima_imagem"
                   type="file"
                   @change="addProfileImage"
                   class="border text-sm"
@@ -160,12 +161,12 @@
             </div>
 
             <div class="p-2 w-full md:w-1/3">
-              <label for="name">Sobrenome*</label>
+              <label for="lastname">Sobrenome*</label>
               <input
                 type="text"
                 v-model="condolencia.pessoa.sobrenome"
-                id="name"
-                name="name"
+                id="lastname"
+                name="lastname"
                 :class="{
                   'border-red-700':
                     submitted && $v.condolencia.pessoa.sobrenome.$error,
@@ -179,12 +180,12 @@
               </span>
             </div>
             <div class="p-2 w-full md:w-1/3">
-              <label for="name">RG ou CPF </label>
+              <label for="cpf">CPF</label>
               <input
                 type="text"
                 v-model="condolencia.pessoa.cpf"
-                id="name"
-                name="name"
+                id="cpf"
+                name="cpf"
                 v-mask="'###.###.###.##'"
               />
             </div>
@@ -192,27 +193,14 @@
 
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
-              <label for="name">e-mail*</label>
+              <label for="rg">RG</label>
               <input
                 type="text"
-                v-model="condolencia.pessoa.email"
-                id="name"
-                name="name"
-                :class="{
-                  'border-red-700':
-                    submitted && $v.condolencia.pessoa.email.$error,
-                }"
+                v-model="condolencia.pessoa.rg"
+                id="rg"
+                name="rg"
+                v-mask="'##.###.###-#'"
               />
-              <span
-                class="text-red-700"
-                v-if="submitted && !$v.condolencia.pessoa.email.required"
-                >E-mail é obrigatório</span
-              >
-              <span
-                class="text-red-700"
-                v-if="submitted && !$v.condolencia.pessoa.email.email"
-                >E-mail inválido</span
-              >
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -221,6 +209,7 @@
                 <select
                   v-model="condolencia.pessoa.sentimento"
                   id="grid-sentimento"
+                  name="grid-sentimento"
                 >
                   <option value="nao_informar" selected>
                     Não quero informar
@@ -247,7 +236,7 @@
             </div>
 
             <div class="p-2 w-full md:w-1/3">
-              <label for="name">A minha mensagem é </label>
+              <label for="grid-status">A minha mensagem é </label>
               <div
                 class="relative border"
                 :class="{
@@ -284,13 +273,39 @@
           </div>
 
           <div class="md:flex mt-3">
+            <div class="p-2 w-full">
+              <label for="email">e-mail*</label>
+              <input
+                type="text"
+                v-model="condolencia.pessoa.email"
+                id="email"
+                name="email"
+                :class="{
+                  'border-red-700':
+                    submitted && $v.condolencia.pessoa.email.$error,
+                }"
+              />
+              <span
+                class="text-red-700"
+                v-if="submitted && !$v.condolencia.pessoa.email.required"
+                >E-mail é obrigatório</span
+              >
+              <span
+                class="text-red-700"
+                v-if="submitted && !$v.condolencia.pessoa.email.email"
+                >E-mail inválido</span
+              >
+            </div>
+          </div>
+
+          <div class="md:flex mt-3">
             <div class="form-group p-2 w-full">
-              <label for="name">Condolência* </label>
+              <label for="texto">Condolência* </label>
               <textarea
                 name="texto"
                 id="texto"
                 cols="10"
-                rows="3"
+                rows="6"
                 placeholder=" Escrever minha condolência"
                 v-model="condolencia.texto"
                 class="border p-2 mt-3 w-full"
@@ -307,7 +322,7 @@
               v-model="condolencia.politica_privacidade"
               required
             />
-            <p class="text-gray-600 text-sm">
+            <p class="text-gray-600 text-sm cursor-default">
               Li e concordo com a política de privacidade.
             </p>
           </div>
@@ -317,7 +332,7 @@
           <input
             type="button"
             value="Avançar"
-            class="bg-blue-600 hover:bg-blue-500 text-white font-semibold p-3 w-full cursor-pointer"
+            class="bg-blue-600 hover:bg-blue-500 text-white font-semibold p-3 w-full cursor-pointer rounded-sm"
             @click="changeForm"
           />
         </div>
@@ -327,14 +342,14 @@
             <input
               type="submit"
               value="Enviar"
-              class="bg-green-600 hover:bg-green-500 text-white font-semibold p-3 w-full cursor-pointer"
+              class="bg-green-600 hover:bg-green-500 text-white font-semibold p-3 w-full cursor-pointer rounded-sm"
             />
           </div>
           <div>
             <input
               type="button"
               value="Voltar"
-              class="bg-transparent underline cursor-pointer inline-block text-gray-700 text-sm font-bold mt-6"
+              class="bg-transparent underline cursor-pointer inline-block text-gray-700 text-sm font-bold mt-4"
               @click="changeForm"
             />
           </div>
