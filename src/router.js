@@ -39,7 +39,7 @@ export default new Router({
         ],
     },
     {
-      path: "/condolencias/:id",
+      path: "/condolencia/:id",
       name: "Condolence",
       component: () => import("./layouts/Condolence.vue"),
     },

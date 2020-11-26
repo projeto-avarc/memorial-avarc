@@ -4,18 +4,17 @@
       <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
       <hr />
 
-      <div class="mb-4 mt-5 flex flex-wrap justify-center">
-        <h3
-          v-if="condolences_count <= 0"
-          class="text-2xl text-gray-900 font-semibold"
+      <div class="mb-4 mt-5 grid grid-cols-3 gap-4">
+        <p
+          v-if="!condolences_exist"
+          class="text-xl text-gray-900"
         >
-          Listagem das condolências: <strong>Nenhum registro</strong>
-        </h3>
+          Nenhum registro encontrado
+        </p>
         <div
           v-else
           v-for="condolence in condolences"
           v-bind:key="condolence.id"
-          class="max-w-sm w-full lg:flex items-center mb-4 mr-3"
         >
           <CardCondolence :condolencia="condolence"></CardCondolence>
         </div>
@@ -39,18 +38,15 @@ export default {
   data() {
     return {
       condolences: [],
-      condolences_count: 1,
+      condolences_exist: true,
       pessoa: null,
       showModal: false,
     };
   },
   mounted() {
     axios
-      .get("http://localhost:1337/condolences")
+      .get("http://avarcsp-001-site1.gtempurl.com/api/Mensagems/status?status=Aprovado")
       .then((response) => (this.condolences = response.data));
-    axios
-      .get("http://localhost:1337/condolences/count")
-      .then((response) => (this.condolences_count = response.data));
   },
   methods: {},
 };
