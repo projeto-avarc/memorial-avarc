@@ -364,8 +364,7 @@
     </Jumbotron>
     <loading 
       :active.sync="isLoading" 
-      :can-cancel="true" 
-      :on-cancel="onCancel"
+      :can-cancel="false" 
       :is-full-page="fullPage">
     </loading>
   </div>
@@ -494,8 +493,7 @@ export default {
     },
     goBack() {
       this.vitima = !this.vitima;
-    },
-    onCancel() {}
+    }
   },
 };
 </script>
