@@ -20,9 +20,9 @@
         </div>
       </div>
     </Jumbotron>
-    <loading 
-      :active.sync="isLoading" 
-      :can-cancel="false" 
+    <loading
+      :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="fullPage">
     </loading>
   </div>

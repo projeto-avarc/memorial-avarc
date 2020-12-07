@@ -58,8 +58,19 @@
                 v-model="condolencia.vitima.cpf"
                 id="vitima_cpf"
                 name="vitima_cpf"
-                v-mask="'###.###.###.##'"
+                v-mask="'###.###.###-##'"
+                :class="{
+                  'border-red-700':
+                    warning && $v.condolencia.vitima.cpf.$error,
+                }"
               />
+
+              <span
+                v-if="warning && !$v.condolencia.vitima.cpf.valid"
+                class="invalid-feedback text-red-700"
+              >
+                CPF inválido
+              </span>
             </div>
           </div>
 
@@ -130,6 +141,12 @@
                   class="border text-sm"
                   accept="image/*"
                 />
+                <span
+                  v-if="fileExceededMaxSize"
+                  class="invalid-feedback text-red-700"
+                >
+                  O arquivo deve ter no máximo 1MB
+                </span>
               </div>
               <div v-if="condolencia.vitima.imagem" class="text-right block">
                 <button
@@ -191,17 +208,24 @@
                 v-model="condolencia.pessoa.cpf"
                 id="cpf"
                 name="cpf"
-                v-mask="'###.###.###.##'"
+                v-mask="'###.###.###-##'"
                 :class="{
                   'border-red-700':
                     warning && $v.condolencia.pessoa.cpf.$error,
                 }"
               />
               <span
-                v-if="warning && !$v.condolencia.pessoa.sobrenome.required"
+                v-if="warning && !$v.condolencia.pessoa.cpf.required"
                 class="invalid-feedback text-red-700"
               >
                 CPF é obrigatório
+              </span>
+
+              <span
+                v-if="warning && !$v.condolencia.pessoa.cpf.valid"
+                class="invalid-feedback text-red-700"
+              >
+                CPF inválido
               </span>
             </div>
           </div>
@@ -326,9 +350,9 @@
         </div>
       </form>
     </Jumbotron>
-    <loading 
-      :active.sync="isLoading" 
-      :can-cancel="false" 
+    <loading
+      :active.sync="isLoading"
+      :can-cancel="false"
       :is-full-page="fullPage">
     </loading>
   </div>
@@ -344,6 +368,16 @@ import Jumbotron from '@/components/Jumbotron'
 import Loading from 'vue-loading-overlay';
 // Import stylesheet
 import 'vue-loading-overlay/dist/vue-loading.css';
+
+
+const RE_CPF = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/
+const cpfValidator = value => {
+  if (!value || value.length <= 0) {
+    return true
+  }
+
+  return RE_CPF.test(value)
+}
 
 export default {
   name: "condolenceRegister",
@@ -376,6 +410,7 @@ export default {
           sentimento: "",
         },
       },
+      fileExceededMaxSize: false,
       isLoading: false,
       fullPage: true,
       warning: false,
@@ -390,7 +425,7 @@ export default {
       vitima: {
         nome: { required },
         sobrenome: { required },
-        cpf: {},
+        cpf: { valid: cpfValidator},
         rg: {},
         endereco_rua: {},
         endereco_cidade: {},
@@ -400,7 +435,7 @@ export default {
       pessoa: {
         nome: { required },
         sobrenome: { required },
-        cpf: { required },
+        cpf: { required, valid: cpfValidator },
         rg: { required },
         email: { required, email },
         sentimento: {},
@@ -412,10 +447,10 @@ export default {
       this.warning = true;
       this.$v.$touch();
 
-      if (this.$v.$invalid) {
+      if (this.$v.$invalid || this.fileExceededMaxSize) {
         return;
       }
-      
+
       this.isLoading = true;
 
       axios
@@ -430,9 +465,24 @@ export default {
     },
     addProfileImage(e) {
       const files = e.target.files || e.dataTransfer.files;
+      const file = files[0]
+
       const regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png)$/;
-      if (!files.length) return;
-      else if (regex.test(files[0].name.toLowerCase())) {
+
+      if (!file) {
+        return
+      }
+
+      this.fileExceededMaxSize = file.size > 1000000
+
+      if (this.fileExceededMaxSize) {
+        e.target.value = ''
+        return
+      }
+
+      const isValidImage = regex.test(file.name.toLowerCase())
+
+      if (isValidImage){
         this.createBase64Image(files[0]);
       }
     },
@@ -445,6 +495,7 @@ export default {
     },
     removeImage: function() {
       this.condolencia.vitima.imagem = ""
+      document.getElementById('vitima_imagem').value = ''
     },
     goAhead() {
       this.$v.$touch();
