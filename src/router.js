@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-// import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
@@ -18,11 +17,6 @@ export default new Router({
             name: "CondolenceRegisterSuccess",
             component: () => import("./views/CondolenceRegisterSuccess.vue"),
           },
-          // {
-          //   path: "/",
-          //   name: "Home",
-          //   component: Home,
-          // },
           {
             path: "/condolencias",
             name: "Condolences",
@@ -42,6 +36,11 @@ export default new Router({
       path: "/condolencia/:id",
       name: "Condolence",
       component: () => import("./layouts/Condolence.vue"),
+    },
+    {
+      path: "/politica-de-privacidade",
+      name: "PrivacyPolicy",
+      component: () => import("./layouts/PrivacyPolicy.vue"),
     },
   ],
 });

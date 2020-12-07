@@ -329,7 +329,7 @@
               required
             />
             <p class="text-gray-600 text-sm cursor-default">
-              Li e concordo com a política de privacidade.
+              Li e concordo com a <router-link to="/politica-de-privacidade" class="underline" target="_blank">política de privacidade</router-link>.
             </p>
           </div>
         </div>
