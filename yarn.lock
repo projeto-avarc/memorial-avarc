@@ -8603,6 +8603,11 @@ vue-router@^3.0.3:
   resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.4.6.tgz#f7bda2c9a43d39837621c9a02ba7789f5daa24b2"
   integrity sha1-972iyaQ9OYN2IcmgK6d4n12qJLI=
 
+vue-social-sharing@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/vue-social-sharing/-/vue-social-sharing-3.0.4.tgz#09d5af4872599fbf005b7ed8a52eaf926ef37eaa"
+  integrity sha512-noifuAgZIiNnsVEwGYz0kTVRdj80JkEIt1Qp1HRTLYPPQsyKVhrIMqJGVQGQjm9cp4UB51pUOxdGElMVyavvtw==
+
 vue-style-loader@^4.1.0:
   version "4.1.2"
   resolved "https://registry.npm.taobao.org/vue-style-loader/download/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"

@@ -2,9 +2,9 @@
   <div>
     <NavBar class="shadow-sm"></NavBar>
     <div class="container mx-auto max-w-screen-md">
-        <!-- v-if="condolencia" -->
       <div
         class="box"
+        v-if="condolencia"
       >
 
         <div class="flex items-center">
@@ -65,14 +65,25 @@
           <span class="text-sm block">com saudade.</span>
         </div>
 
-        <div class="flex justify-center">
+        <div class="flex justify-center items-center">
           <qrcode-vue :value="value" :size="100" level="H"></qrcode-vue>
+
+          <ShareNetwork
+            network="facebook"
+            :url="value" 
+            title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+            description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+            quote="The hot reload is so fast it\'s near instant. - Evan You"
+            hashtags="vuejs,vite"
+            class="ml-6"
+          >
+            Compartilhar no Facebook
+        </ShareNetwork>
         </div>
-          <p class="text-center mt-4 text-sm">{{value}}</p>
       </div>
-      <!-- <div v-else class="box">
+      <div v-else class="box">
         <p class=" text-xl">Condolência não encontrada!</p>
-      </div> -->
+      </div>
       <div class="text-left">
         <router-link
           to="/condolencias"
@@ -81,6 +92,11 @@
         >
       </div>
     </div>
+    <loading 
+      :active.sync="isLoading" 
+      :can-cancel="false" 
+      :is-full-page="fullPage">
+    </loading>
   </div>
 </template>
 
@@ -88,16 +104,23 @@
 import axios from 'axios'
 import NavBar from "@/components/NavBar.vue"
 import QrcodeVue from 'qrcode.vue'
+// Import component
+import Loading from 'vue-loading-overlay'
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css'
 
 export default {
   name: 'condolencia',
   components: {
     NavBar,
     QrcodeVue,
+    Loading
   },
   data () {
     return {
       condolencia: null,
+      isLoading: true,
+      fullPage: true,
       value: window.location.href,
     }
   },
@@ -105,6 +128,7 @@ export default {
     axios
       .get(`https://www.opememorial.net/api/Mensagems/id?id=${ this.$route.params.id }`)
       .then(response => (this.condolencia = response.data))
+      .finally(() => this.isLoading = false)
   }
 }
 </script>
