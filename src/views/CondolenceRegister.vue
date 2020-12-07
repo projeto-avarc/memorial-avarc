@@ -185,101 +185,50 @@
               </span>
             </div>
             <div class="p-2 w-full md:w-1/3">
-              <label for="cpf">CPF</label>
+              <label for="cpf">CPF*</label>
               <input
                 type="text"
                 v-model="condolencia.pessoa.cpf"
                 id="cpf"
                 name="cpf"
                 v-mask="'###.###.###.##'"
+                :class="{
+                  'border-red-700':
+                    warning && $v.condolencia.pessoa.cpf.$error,
+                }"
               />
+              <span
+                v-if="warning && !$v.condolencia.pessoa.sobrenome.required"
+                class="invalid-feedback text-red-700"
+              >
+                CPF é obrigatório
+              </span>
             </div>
           </div>
 
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
-              <label for="rg">RG</label>
+              <label for="rg">RG*</label>
               <input
                 type="text"
                 v-model="condolencia.pessoa.rg"
                 id="rg"
                 name="rg"
                 v-mask="'##.###.###-#'"
-              />
-            </div>
-
-            <div class="p-2 w-full md:w-1/3">
-              <label for="grid-sentimento"> Sentimentos </label>
-              <div class="relative border">
-                <select
-                  v-model="condolencia.pessoa.sentimento"
-                  id="grid-sentimento"
-                  name="grid-sentimento"
-                >
-                  <option value="nao_informar" selected>
-                    Não quero informar
-                  </option>
-                  <option value="saudades" selected>Saudades</option>
-                  <option value="inconformismo">Inconformismo</option>
-                  <option value="fe">Fé</option>
-                  <option value="esperanca">Esperança</option>
-                </select>
-                <div
-                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                >
-                  <svg
-                    class="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-2 w-full md:w-1/3">
-              <label for="grid-privacidade">A minha mensagem é </label>
-              <div
-                class="relative border"
                 :class="{
                   'border-red-700':
-                    warning && $v.condolencia.privacidade.$error,
+                    warning && $v.condolencia.pessoa.rg.$error,
                 }"
+              />
+              <span
+                v-if="warning && !$v.condolencia.pessoa.sobrenome.required"
+                class="invalid-feedback text-red-700"
               >
-                <select v-model.number="condolencia.privacidade" id="grid-privacidade">
-                  <option value="4">Pública</option>
-                  <option value="3">
-                    Parcialmente pública - Será relevado o seu conteúdo e
-                    autoria daqui dez anos
-                  </option>
-                  <option value="2">
-                    Sigilosa - Somente a condolência será colocado na cápsula do
-                    tempo sem identificação de sua autoria
-                  </option>
-                  <option value="1">Sigilosa</option>
-                </select>
-                <div
-                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                >
-                  <svg
-                    class="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                    />
-                  </svg>
-                </div>
-              </div>
+                RG é obrigatório
+              </span>
             </div>
-          </div>
 
-          <div class="md:flex mt-3">
-            <div class="p-2 w-full">
+            <div class="p-2 w-full md:w-1/3">
               <label for="email">e-mail*</label>
               <input
                 type="text"
@@ -301,6 +250,21 @@
                 v-if="warning && !$v.condolencia.pessoa.email.email"
                 >E-mail inválido</span
               >
+            </div>
+
+            <div class="p-2 w-full md:w-1/3">
+              <label for="grid-sentimento"> Sentimentos </label>
+              <input
+                type="text"
+                placeholder="ex: Saudades, Inconformismo, Fé, Esperança"
+                v-model="condolencia.pessoa.sentimento"
+                id="grid-sentimento"
+                name="grid-sentimento"
+                :class="{
+                  'border-red-700':
+                    warning && $v.condolencia.pessoa.sentimento.$error,
+                }"
+              />
             </div>
           </div>
 
@@ -373,7 +337,7 @@
 <script>
 // import Button from "@/components/Button.vue";
 import axios from "axios"
-import { required, email, /*minLength*/ } from "vuelidate/lib/validators"
+import { required, email } from "vuelidate/lib/validators"
 import Jumbotron from '@/components/Jumbotron'
 
 // Import component
@@ -436,8 +400,8 @@ export default {
       pessoa: {
         nome: { required },
         sobrenome: { required },
-        cpf: {},
-        rg: {},
+        cpf: { required },
+        rg: { required },
         email: { required, email },
         sentimento: {},
       },
