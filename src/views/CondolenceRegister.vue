@@ -363,6 +363,7 @@
 import axios from "axios"
 import { required, email } from "vuelidate/lib/validators"
 import Jumbotron from '@/components/Jumbotron'
+import { validate } from 'gerador-validador-cpf'
 
 // Import component
 import Loading from 'vue-loading-overlay';
@@ -370,13 +371,12 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 
 
-const RE_CPF = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/
 const cpfValidator = value => {
   if (!value || value.length <= 0) {
     return true
   }
 
-  return RE_CPF.test(value)
+  return validate(value)
 }
 
 export default {
