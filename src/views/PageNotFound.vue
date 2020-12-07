@@ -1,30 +1,24 @@
 <template>
   <div>
-      
-    <h1 class="text-2xl mb-5 mt-20">Página não encontrada :(</h1>
-    <router-link to="/">
-      <Button value="Voltar" class="primary-color text-sm"></Button>
-    </router-link>
+    
+    <NavBar class="shadow-sm"></NavBar>
+    <div class="container mx-auto max-w-screen-md mb-16">
+
+      <h1 class="pt-12 text-6xl text-center text-gray-800 mb-6">Página não encontrada!</h1>
+      <router-link to="/" class="underline  font-semibold text-3xl text-center block">Voltar</router-link>
+
+    </div>
 
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
-import Button from '@/components/Button.vue'
+import NavBar from "@/components/NavBar.vue"
 
 export default {
-  name: 'home',
+  name: 'pageNotFound',
   components: {
-    Button
+    NavBar
   }
 }
 </script>
-
-<style lang="scss">
-.home {
-  > p {
-    margin-bottom: 20px;
-  }
-}
-</style>
