@@ -3,11 +3,11 @@
     <NavBar class="shadow-sm"></NavBar>
     <div class="container mx-auto max-w-screen-md">
       <div
-        class="box"
+        class="box py-8 px-4 sm:py-16 sm:px-10"
         v-if="condolencia"
       >
 
-        <div class="flex items-center">
+        <div class="flex items-center max-w-lg m-auto justify-between flex-col sm:flex-row">
           <div
             class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
           >
@@ -62,27 +62,65 @@
               condolencia.pessoa.sobrenome
             }}</strong></span
           >
-          <span class="text-sm block">com saudade.</span>
+          <span v-if="condolencia.pessoa.sentimento" class="text-sm block">com {{condolencia.pessoa.sentimento}}.</span>
         </div>
 
-        <div class="flex justify-center items-center">
-          <qrcode-vue :value="value" :size="100" level="H"></qrcode-vue>
-
-          <ShareNetwork
-            network="facebook"
-            :url="value" 
-            title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
-            description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
-            quote="The hot reload is so fast it\'s near instant. - Evan You"
-            hashtags="vuejs,vite"
-            class="ml-6"
-          >
-            Compartilhar no Facebook
-        </ShareNetwork>
+        <div class="flex justify-center items-center md:items-end flex-col sm:flex-row mt-10 mb-4">
+          <qrcode-vue :value="value" :size="100" level="H" class="sm:mr-6 mb-8 sm:mb-0"></qrcode-vue>
+          <div class="md:mb-1">
+            <p class="text-sm mb-1">Compartilhar:</p>
+            <div>
+              <ShareNetwork
+                network="facebook"
+                :url="value" 
+                title="Memorial às vítimas do Covid-19"
+                description="Uma breve descrição aqui!"
+                quote="Uma breve descrição aqui!"
+                hashtags="Memorial,Avarc"
+                class="mr-2"
+              >
+                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-12 inline-block">
+              </ShareNetwork>
+              <ShareNetwork
+                network="twitter"
+                :url="value" 
+                title="Memorial às vítimas do Covid-19"
+                hashtags="Memorial,Avarc"
+                class="mr-2"
+              >
+                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-12 inline-block">
+              </ShareNetwork>
+              <ShareNetwork
+                network="linkedin"
+                title="Memorial às vítimas do Covid-19"
+                :url="value"
+                class="mr-2"
+              >
+                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-12 inline-block">
+              </ShareNetwork>
+              <ShareNetwork
+                network="whatsapp"
+                :url="value" 
+                title="Memorial às vítimas do Covid-19"
+                description="Uma breve descrição aqui!"
+                class="mr-2"
+              >
+                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-12 inline-block">
+              </ShareNetwork>
+              <ShareNetwork
+                network="email"
+                :url="value" 
+                title="Memorial às vítimas do Covid-19"
+                description="Uma breve descrição aqui!"
+              >
+                <img src="../assets/images/icon-email.png" alt="Email" class="w-12 inline-block">
+              </ShareNetwork>
+            </div>
+          </div>
         </div>
       </div>
-      <div v-else class="box">
-        <p class=" text-xl">Condolência não encontrada!</p>
+      <div v-else class="box py-8 px-4 sm:py-16 sm:px-10">
+        <p class="text-center text-xl">Condolência não encontrada!</p>
       </div>
       <div class="text-left">
         <router-link
@@ -104,9 +142,7 @@
 import axios from 'axios'
 import NavBar from "@/components/NavBar.vue"
 import QrcodeVue from 'qrcode.vue'
-// Import component
 import Loading from 'vue-loading-overlay'
-// Import stylesheet
 import 'vue-loading-overlay/dist/vue-loading.css'
 
 export default {
@@ -144,6 +180,6 @@ export default {
   height: 150px;
 }
 .box {
-  @apply my-12 bg-blue-800 flex flex-col rounded-xl shadow-2xl py-16 px-10 text-lg text-white;
+  @apply my-12 bg-blue-800 flex flex-col rounded-xl shadow-2xl text-lg text-white;
 }
 </style>
