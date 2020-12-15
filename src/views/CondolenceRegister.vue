@@ -276,7 +276,7 @@
               >
             </div>
 
-            <div class="p-2 w-full md:w-1/3">
+            <div class="p-2 w-full md:w-1/3 relative">
               <label for="grid-sentimento"> Sentimentos </label>
               <input
                 type="text"
@@ -289,6 +289,7 @@
                     warning && $v.condolencia.pessoa.sentimento.$error,
                 }"
               />
+              <p class="text-sm text-gray-600 text-right mt-1 absolute right-0 mr-2" v-if="condolencia.pessoa.sentimento">com {{condolencia.pessoa.sentimento}}.</p>
             </div>
           </div>
 
