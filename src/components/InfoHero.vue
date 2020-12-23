@@ -19,7 +19,13 @@
       <router-link to="/condolencia/criar">
         <Button
           value="Prestar condolência"
-          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-4"
+          class="bg-red-500 hover:bg-red-700 text-white font-bold rounded-full mt-4 mr-2"
+        ></Button>
+      </router-link>
+      <router-link to="/depoimento/criar">
+        <Button
+          value="Prestar depoimento"
+          class="bg-red-500 hover:bg-red-700 text-white font-bold rounded-full mt-4"
         ></Button>
       </router-link>
     </div>

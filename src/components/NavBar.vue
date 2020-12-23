@@ -26,45 +26,78 @@
           </button>
         </div>
         <div
-          class="w-full block flex-grow lg:flex lg:items-center lg:w-auto lg:text-right"
+          class="w-full block flex-grow lg:flex lg:items-center lg:w-auto justify-between"
           v-show="showNav"
         >
           <div
             class="text-sm lg:flex-grow bg-gray-100 px-5 pb-4 pt-1 mt-5 lg:bg-transparent lg:p-0 lg:m-0"
           >
-            <router-link to="/depoimentos/criar">
-              <a
-                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 md:ml-8 font-normal text-base sm:text-lg md:text-md"
-              >
-                Prestar Depoimento
-              </a>
-            </router-link>
 
             <router-link to="/depoimentos">
               <a
                 href="#responsive-header"
-                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 md:ml-8 font-normal text-base sm:text-lg md:text-md"
+                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 hover:underline md:ml-8 font-normal text-base sm:text-lg md:text-md"
               >
-                Listagem de Depoimentos
-              </a>
-            </router-link>
-            <router-link to="/condolencia/criar">
-              <a
-                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 md:ml-8 font-normal text-base sm:text-lg md:text-md"
-              >
-                Prestar condolência
+                Depoimentos
               </a>
             </router-link>
 
             <router-link to="/condolencias">
               <a
                 href="#responsive-header"
-                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 md:ml-8 font-normal text-base sm:text-lg md:text-md"
+                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 hover:underline md:ml-8 font-normal text-base sm:text-lg md:text-md"
               >
-                Listagem de condolências
+                Condolências
               </a>
             </router-link>
           </div>
+          <div>
+              <ShareNetwork
+                network="facebook"
+                :url="value" 
+                title="Memorial às vítimas do Covid-19"
+                description="Uma breve descrição aqui!"
+                quote="Uma breve descrição aqui!"
+                hashtags="Memorial,Avarc"
+                class="mr-2"
+              >
+                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-12 inline-block">
+              </ShareNetwork>
+              <ShareNetwork
+                network="twitter"
+                :url="value" 
+                title="Memorial às vítimas do Covid-19"
+                hashtags="Memorial,Avarc"
+                class="mr-2"
+              >
+                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-12 inline-block">
+              </ShareNetwork>
+              <ShareNetwork
+                network="linkedin"
+                title="Memorial às vítimas do Covid-19"
+                :url="value"
+                class="mr-2"
+              >
+                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-12 inline-block">
+              </ShareNetwork>
+              <ShareNetwork
+                network="whatsapp"
+                :url="value" 
+                title="Memorial às vítimas do Covid-19"
+                description="Uma breve descrição aqui!"
+                class="mr-2"
+              >
+                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-12 inline-block">
+              </ShareNetwork>
+              <ShareNetwork
+                network="email"
+                :url="value" 
+                title="Memorial às vítimas do Covid-19"
+                description="Uma breve descrição aqui!"
+              >
+                <img src="../assets/images/icon-email.png" alt="Email" class="w-12 inline-block">
+              </ShareNetwork>
+            </div>
         </div>
       </div>
     </div>
@@ -76,6 +109,7 @@ export default {
   data() {
     return {
       showNav: true,
+      value: window.location.href,
     };
   },
   methods: {

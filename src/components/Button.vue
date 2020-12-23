@@ -16,7 +16,7 @@ export default {
 .button {
   display: inline-block;
   border-radius: 4px;
-  padding: 8px 25px;
+  padding: 8px 15px;
   text-decoration: none;
   font-weight: 600;
   transition: all 250ms;

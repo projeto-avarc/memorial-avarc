@@ -5,7 +5,7 @@
     >
       <div class="imagespace">
         <span
-          v-if="depoimento"
+          v-if="depoimento.fotografia"
           class="h-16 w-16 md:h-22 md:w-22 rounded-full mx-auto md:mx-0  picture"
           :style="{
             'background-image': `url(data:image/jpeg;base64,${depoimento.fotografia})`,
@@ -60,7 +60,7 @@ export default {
   },
   data() {
     return {};
-  },
+  }
 };
 </script>
 
