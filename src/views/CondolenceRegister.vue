@@ -82,7 +82,6 @@
                 v-model="condolencia.vitima.rg"
                 id="vitima_rg"
                 name="vitima_rg"
-                v-mask="'##.###.###-#'"
               />
             </div>
 
@@ -232,13 +231,12 @@
 
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
-              <label for="rg">RG*</label>
+              <label for="rg">RG</label>
               <input
                 type="text"
                 v-model="condolencia.pessoa.rg"
                 id="rg"
                 name="rg"
-                v-mask="'##.###.###-#'"
                 :class="{
                   'border-red-700':
                     warning && $v.condolencia.pessoa.rg.$error,
@@ -437,7 +435,7 @@ export default {
         nome: { required },
         sobrenome: { required },
         cpf: { required, valid: cpfValidator },
-        rg: { required },
+        rg: {  },
         email: { required, email },
         sentimento: {},
       },

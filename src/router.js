@@ -33,7 +33,7 @@ export default new Router({
           component: () => import("./views/Tributes.vue"),
         },
         {
-          path: "/depoimentos/criar",
+          path: "/depoimento/criar",
           name: "TributeRegister",
           component: () => import("./views/TributeRegister.vue"),
         },

@@ -79,13 +79,12 @@
 
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
-              <label for="rg">RG*</label>
+              <label for="rg">RG</label>
               <input
                 type="text"
                 v-model="depoimento.rg"
                 id="rg"
                 name="rg"
-                v-mask="'##.###.###-#'"
                 :class="{
                   'border-red-700': warning && $v.depoimento.rg.$error,
                 }"
@@ -333,16 +332,14 @@ export default {
       nome: { required },
       sobreNome: { required },
       cpf: { required, valid: cpfValidator },
-      rg: { required },
+      rg: { },
       rua: {},
       cidade: {},
       estado: {},
       profissao: { required },
       email: { required, email },
       sentimento: { required },
-      privacidade: { required },
       fotografia: {},
-      texto: { required },
     },
   },
   methods: {

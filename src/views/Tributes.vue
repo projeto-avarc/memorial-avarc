@@ -2,7 +2,7 @@
   <div class="container px-2 mb-20">
     <Jumbotron>
       <h3 class="text-2xl text-gray-900 font-semibold">
-        Depoimentos
+        Depoimentos <span class="text-sm text-gray-800 align-middle">(Área da saúde)</span>
       </h3>
       <hr />
 
