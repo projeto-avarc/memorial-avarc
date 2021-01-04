@@ -237,17 +237,7 @@
                 v-model="condolencia.pessoa.rg"
                 id="rg"
                 name="rg"
-                :class="{
-                  'border-red-700':
-                    warning && $v.condolencia.pessoa.rg.$error,
-                }"
               />
-              <span
-                v-if="warning && !$v.condolencia.pessoa.sobrenome.required"
-                class="invalid-feedback text-red-700"
-              >
-                RG é obrigatório
-              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -435,7 +425,7 @@ export default {
         nome: { required },
         sobrenome: { required },
         cpf: { required, valid: cpfValidator },
-        rg: {  },
+        rg: {},
         email: { required, email },
         sentimento: {},
       },

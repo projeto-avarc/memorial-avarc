@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-col md:flex-row justify-between bg-white rounded-lg p-5 md:py-5 md:px-10 border mb-3 md:mb-0 card">
+    <div class="flex flex-col md:flex-row justify-between bg-white rounded-lg p-5 md:py-5 md:px-16 border mb-3 md:mb-0 card">
       <div class="imagespace">
         <span 
           v-if="condolencia.vitima.imagem"

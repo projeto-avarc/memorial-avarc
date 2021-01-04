@@ -50,8 +50,17 @@
                 Condolências
               </a>
             </router-link>
+
+            <router-link to="/sobre">
+              <a
+                href="#responsive-header"
+                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 hover:underline md:ml-8 font-normal text-base sm:text-lg md:text-md"
+              >
+                Sobre o memorial
+              </a>
+            </router-link>
           </div>
-          <div>
+          <div class="sharing">
               <ShareNetwork
                 network="facebook"
                 :url="value" 
@@ -61,7 +70,7 @@
                 hashtags="Memorial,Avarc"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-12 inline-block">
+                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-6 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="twitter"
@@ -70,7 +79,7 @@
                 hashtags="Memorial,Avarc"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-12 inline-block">
+                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-6 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="linkedin"
@@ -78,7 +87,7 @@
                 :url="value"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-12 inline-block">
+                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-6 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="whatsapp"
@@ -87,7 +96,7 @@
                 description="Uma breve descrição aqui!"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-12 inline-block">
+                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-6 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="email"
@@ -95,7 +104,7 @@
                 title="Memorial às vítimas do Covid-19"
                 description="Uma breve descrição aqui!"
               >
-                <img src="../assets/images/icon-email.png" alt="Email" class="w-12 inline-block">
+                <img src="../assets/images/icon-email.png" alt="Email" class="w-6 inline-block">
               </ShareNetwork>
             </div>
         </div>
@@ -134,6 +143,16 @@ nav {
 @media (max-width: 640px) {
   nav {
     box-shadow: 0px 50px 50px 50px #fff;
+  }
+}
+.sharing {
+  a:hover {
+    box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.2);
+  }
+
+  @media (max-width: 1023px) {
+    text-align: right;
+    margin-top: 10px;
   }
 }
 </style>

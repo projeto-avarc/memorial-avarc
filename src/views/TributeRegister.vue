@@ -85,16 +85,7 @@
                 v-model="depoimento.rg"
                 id="rg"
                 name="rg"
-                :class="{
-                  'border-red-700': warning && $v.depoimento.rg.$error,
-                }"
               />
-              <span
-                v-if="warning && !$v.depoimento.rg.required"
-                class="invalid-feedback text-red-700"
-              >
-                RG é obrigatório
-              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -194,7 +185,7 @@
                 </button>
               </div>
             </div>
-            <div class="p-2 w-full md:w-1/3">
+            <div class="p-2 w-full md:w-1/3 relative">
               <label for="grid-sentimento"> Sentimentos </label>
               <input
                 type="text"
@@ -202,9 +193,6 @@
                 v-model="depoimento.sentimento"
                 id="grid-sentimento"
                 name="grid-sentimento"
-                :class="{
-                  'border-red-700': warning && $v.depoimento.sentimento.$error,
-                }"
               />
               <p
                 class="text-sm text-gray-600 text-right mt-1 absolute right-0 mr-2"
@@ -332,13 +320,13 @@ export default {
       nome: { required },
       sobreNome: { required },
       cpf: { required, valid: cpfValidator },
-      rg: { },
+      rg: {},
       rua: {},
       cidade: {},
       estado: {},
       profissao: { required },
       email: { required, email },
-      sentimento: { required },
+      sentimento: {},
       fotografia: {},
     },
   },

@@ -55,6 +55,11 @@ export default new Router({
       component: () => import("./layouts/PrivacyPolicy.vue"),
     },
     {
+      path: "/sobre",
+      name: "About",
+      component: () => import("./layouts/About.vue"),
+    },
+    {
       path: "/:pathMatch(.*)*",
       name: "pageNotFound",
       component: () => import("./views/PageNotFound.vue"),
