@@ -13,7 +13,7 @@
         <div class="block lg:hidden">
           <button
             @click="changeNav"
-            class="flex items-center px-3 py-2 border rounded text-blue-900 border-blue-900 hover:text-blue-600 hover:border-blue-600"
+            class="flex items-center px-3 py-2 border rounded text-blue-900 border-blue-900  hover:border-blue-600"
           >
             <svg
               class="fill-current h-3 w-3"
@@ -36,7 +36,7 @@
             <router-link to="/depoimentos">
               <a
                 href="#responsive-header"
-                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 hover:underline md:ml-8 font-normal text-base sm:text-lg md:text-md"
+                class="link block mt-4 lg:inline-block lg:mt-0 text-blue-900 font-normal text-base sm:text-lg md:text-md"
               >
                 Depoimentos
               </a>
@@ -45,7 +45,7 @@
             <router-link to="/condolencias">
               <a
                 href="#responsive-header"
-                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 hover:underline md:ml-8 font-normal text-base sm:text-lg md:text-md"
+                class="link block mt-4 lg:inline-block lg:mt-0 text-blue-900 font-normal text-base sm:text-lg md:text-md"
               >
                 Condolências
               </a>
@@ -54,7 +54,7 @@
             <router-link to="/sobre">
               <a
                 href="#responsive-header"
-                class="block mt-4 lg:inline-block lg:mt-0 text-blue-900 hover:text-blue-600 hover:underline md:ml-8 font-normal text-base sm:text-lg md:text-md"
+                class="link block mt-4 lg:inline-block lg:mt-0 text-blue-900 font-normal text-base sm:text-lg md:text-md"
               >
                 Sobre o memorial
               </a>
@@ -70,7 +70,7 @@
                 hashtags="Memorial,Avarc"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-6 inline-block">
+                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-10 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="twitter"
@@ -79,7 +79,7 @@
                 hashtags="Memorial,Avarc"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-6 inline-block">
+                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-10 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="linkedin"
@@ -87,7 +87,7 @@
                 :url="value"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-6 inline-block">
+                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-10 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="whatsapp"
@@ -96,7 +96,7 @@
                 description="Uma breve descrição aqui!"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-6 inline-block">
+                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-10 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="email"
@@ -104,7 +104,7 @@
                 title="Memorial às vítimas do Covid-19"
                 description="Uma breve descrição aqui!"
               >
-                <img src="../assets/images/icon-email.png" alt="Email" class="w-6 inline-block">
+                <img src="../assets/images/icon-email.png" alt="Email" class="w-10 inline-block">
               </ShareNetwork>
             </div>
         </div>
@@ -146,13 +146,48 @@ nav {
   }
 }
 .sharing {
-  a:hover {
-    box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.2);
+  a {
+    transition: all 200ms;
+    display: inline-block;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
-
   @media (max-width: 1023px) {
-    text-align: right;
     margin-top: 10px;
   }
+}
+a.link {
+  color: #08034e;
+
+  @media (min-width: 1024px) {
+    display: inline-block;
+    position: relative;
+    padding: 0 6px 0 2px;
+    margin: 0 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.slide{
+    &:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 0;
+        height: 1.5px;
+        background-color: #08034e;
+        transition: all .2s;
+        opacity: 0;
+      }
+      &:hover:after {
+        width: 100%;
+        opacity: .2;
+      }
+    }
 }
 </style>
