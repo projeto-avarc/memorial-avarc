@@ -1,4 +1,4 @@
-# avarc-tcc
+# Memorial Avarc
 
 ## Project setup
 ```
