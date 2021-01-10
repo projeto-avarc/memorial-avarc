@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-col md:flex-row justify-between bg-white rounded-lg p-5 md:py-5 md:px-16 border mb-3 md:mb-0 card">
+    <div class="flex flex-col md:flex-row justify-center bg-white rounded-lg p-5 md:py-5 md:px-16 border mb-3 md:mb-0 card">
       <div class="imagespace">
         <span 
           v-if="condolencia.vitima.imagem"
@@ -13,10 +13,10 @@
         </span>
       </div>
 
-      <div class="text-center md:text-right">
+      <div class="text-center md:text-left">
         <h2 class="text-lg font-bold mt-1">{{ condolencia.vitima.nome + " " + condolencia.vitima.sobrenome }}</h2>
         <p
-          class="text-center md:text-right text-sm"
+          class="text-center md:text-left text-sm"
           v-if="condolencia.vitima.endereco_cidade || condolencia.vitima.endereco_estado"
         >
           {{`

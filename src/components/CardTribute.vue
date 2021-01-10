@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="flex flex-col md:flex-row justify-between bg-white rounded-lg p-5 md:py-5 md:px-16 border mb-3 md:mb-0 card"
+      class="flex flex-col md:flex-row justify-center bg-white rounded-lg p-5 md:py-5 md:px-16 border mb-3 md:mb-0 card"
     >
       <div class="imagespace">
         <span
@@ -18,12 +18,12 @@
         ></span>
       </div>
 
-      <div class="text-center md:text-right" v-if="depoimento">
+      <div class="text-center md:text-left" v-if="depoimento">
         <h2 class="text-lg font-bold mt-1">
           {{ depoimento.nome + " " + depoimento.sobreNome }}
         </h2>
         <p
-          class="text-center md:text-right text-sm"
+          class="text-center md:text-left text-sm"
           v-if="depoimento.cidade || depoimento.estado"
         >
           {{
