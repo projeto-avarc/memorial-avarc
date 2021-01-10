@@ -118,7 +118,7 @@ export default {
   data() {
     return {
       showNav: true,
-      value: window.location.href,
+      value: 'www.memorialavarc.com.br',
     };
   },
   methods: {
