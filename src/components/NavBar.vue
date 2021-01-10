@@ -33,21 +33,21 @@
             class="text-sm lg:flex-grow bg-gray-100 px-5 pb-4 pt-1 mt-5 lg:bg-transparent lg:p-0 lg:m-0"
           >
 
-            <router-link to="/depoimentos">
-              <a
-                href="#responsive-header"
-                class="link block mt-4 lg:inline-block lg:mt-0 text-blue-900 font-normal text-base sm:text-lg md:text-md"
-              >
-                Depoimentos
-              </a>
-            </router-link>
-
             <router-link to="/condolencias">
               <a
                 href="#responsive-header"
                 class="link block mt-4 lg:inline-block lg:mt-0 text-blue-900 font-normal text-base sm:text-lg md:text-md"
               >
                 Condolências
+              </a>
+            </router-link>
+
+            <router-link to="/depoimentos">
+              <a
+                href="#responsive-header"
+                class="link block mt-4 lg:inline-block lg:mt-0 text-blue-900 font-normal text-base sm:text-lg md:text-md"
+              >
+                Depoimentos
               </a>
             </router-link>
 
@@ -65,9 +65,9 @@
                 network="facebook"
                 :url="value" 
                 title="Memorial às vítimas do Covid-19"
-                description="Uma breve descrição aqui!"
-                quote="Uma breve descrição aqui!"
-                hashtags="Memorial,Avarc"
+                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                hashtags=""
                 class="mr-2"
               >
                 <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-10 inline-block">
@@ -75,15 +75,15 @@
               <ShareNetwork
                 network="twitter"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19"
-                hashtags="Memorial,Avarc"
+                title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                hashtags=""
                 class="mr-2"
               >
                 <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-10 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="linkedin"
-                title="Memorial às vítimas do Covid-19"
+                title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 :url="value"
                 class="mr-2"
               >
@@ -93,7 +93,7 @@
                 network="whatsapp"
                 :url="value" 
                 title="Memorial às vítimas do Covid-19"
-                description="Uma breve descrição aqui!"
+                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
                 <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-10 inline-block">
@@ -102,7 +102,7 @@
                 network="email"
                 :url="value" 
                 title="Memorial às vítimas do Covid-19"
-                description="Uma breve descrição aqui!"
+                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
               >
                 <img src="../assets/images/icon-email.png" alt="Email" class="w-10 inline-block">
               </ShareNetwork>

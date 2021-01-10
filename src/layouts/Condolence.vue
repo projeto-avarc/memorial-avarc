@@ -74,8 +74,8 @@
                 network="facebook"
                 :url="value" 
                 title="Memorial às vítimas do Covid-19"
-                description="Uma breve descrição aqui!"
-                quote="Uma breve descrição aqui!"
+                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 hashtags="Memorial,Avarc"
                 class="mr-2"
               >
@@ -102,7 +102,7 @@
                 network="whatsapp"
                 :url="value" 
                 title="Memorial às vítimas do Covid-19"
-                description="Uma breve descrição aqui!"
+                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
                 <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-12 inline-block">
@@ -111,7 +111,7 @@
                 network="email"
                 :url="value" 
                 title="Memorial às vítimas do Covid-19"
-                description="Uma breve descrição aqui!"
+                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
               >
                 <img src="../assets/images/icon-email.png" alt="Email" class="w-12 inline-block">
               </ShareNetwork>
