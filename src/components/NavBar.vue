@@ -5,7 +5,7 @@
         <router-link to="/">
           <div class="flex items-center flex-shrink-0 text-white mr-6">
             <img
-              src="../assets/images/logo_memorial_avarc.svg"
+              src="../assets/images/logo_memorial_avarc.png"
               alt="Logo Memorial Avarc"
               style="width: 160px"
             /></div
