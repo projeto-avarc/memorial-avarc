@@ -1,7 +1,15 @@
 <template>
   <div class="container px-2 mb-20">
     <Jumbotron>
-      <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
+      <div class="search-wrapper flex items-baseline">
+        <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
+        <div class="ml-auto">
+          <input class="inline border rounded-sm px-2" type="text" v-model="search" placeholder="Buscar por nome.."/>
+          <button class="inline p-3">
+            <img class="w-4" src="../assets/images/icon-search.svg" alt="Ícone de busca">
+          </button>
+        </div>
+      </div>
       <hr />
 
       <div class="mb-4 mt-5 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
