@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="flex flex-col md:flex-row justify-center bg-white rounded-lg p-5 md:py-5 md:px-16 border mb-3 md:mb-0 card"
+      class="flex flex-col md:flex-row justify-center bg-white rounded-lg p-5 md:py-5 md:px-8 border mb-3 md:mb-0 card"
     >
       <div class="imagespace">
         <span
@@ -73,15 +73,29 @@ export default {
 }
 .imagespace {
   min-width: 60px;
-  margin-right: 20px;
+  margin-right: 10px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+
+  @media (min-width: 768px) {
+    margin-top: 5px;
+  }
 }
 h2 {
   line-height: 18px;
 }
 .card {
   min-height: 120px;
+
+  @media (min-width: 768px) {
+    > div:first-child {
+      flex-basis: 30%;
+    }
+
+    > div:last-child {
+      flex-basis: 70%;
+    }
+  }
 }
 </style>

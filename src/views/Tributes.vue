@@ -1,9 +1,17 @@
 <template>
   <div class="container px-2 mb-20">
     <Jumbotron>
-      <h3 class="text-2xl text-gray-900 font-semibold">
-        Depoimentos <span class="text-sm text-gray-800 align-middle">(Área da saúde)</span>
-      </h3>
+      <div class="search-wrapper flex items-baseline">
+        <h3 class="text-2xl text-gray-900 font-semibold">
+          Depoimentos <span class="text-sm text-gray-800 align-middle">(Área da saúde)</span>
+        </h3>
+        <div class="ml-auto">
+          <input class="inline border rounded-sm px-2" type="text" v-model="search" placeholder="Buscar por nome.."/>
+          <button class="inline p-3" @click="searchEvent()">
+            <img class="w-4" src="../assets/images/icon-search.svg" alt="Ícone de busca">
+          </button>
+        </div>
+      </div>
       <hr />
 
       <div class="mb-4 mt-5 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
@@ -53,6 +61,7 @@ export default {
       showModal: false,
       isLoading: false,
       fullPage: true,
+      search: ''
     };
   },
   mounted() {
@@ -61,10 +70,34 @@ export default {
       .get("https://www.opememorial.net/api/Depoimentos/status?status=Aprovado")
       .then((response) => {
         this.depoimentos = response.data;
-        this.isLoading = false;
-      });
+      })
+      .catch(err => {
+        return new Error(err.message)
+      })
+      .finally(() => {
+        this.isLoading = false
+      })
   },
-  methods: {},
+  methods: {
+    searchEvent() {
+      // eslint-disable-next-line
+      console.log(this.search)
+      
+      this.isLoading = true;
+      axios
+        .get("slfkjkdj")
+        .then((response) => {
+          this.depoimentos = response.data;
+        })
+        .catch(err => {
+          this.depoimentos = []
+          new Error(err.message)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
+    }
+  },
 };
 </script>
 

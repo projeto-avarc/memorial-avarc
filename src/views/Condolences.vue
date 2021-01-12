@@ -5,7 +5,7 @@
         <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
         <div class="ml-auto">
           <input class="inline border rounded-sm px-2" type="text" v-model="search" placeholder="Buscar por nome.."/>
-          <button class="inline p-3">
+          <button class="inline p-3" @click="searchEvent()">
             <img class="w-4" src="../assets/images/icon-search.svg" alt="Ícone de busca">
           </button>
         </div>
@@ -61,18 +61,43 @@ export default {
       showModal: false,
       isLoading: false,
       fullPage: true,
+      search: ''
     };
   },
   mounted() {
-    this.isLoading = true;
+    this.isLoading = true
     axios
       .get("https://www.opememorial.net/api/Mensagems/status?status=Aprovado")
       .then((response) => {
-        this.condolences = response.data;
-        this.isLoading = false;
-      });
+        this.condolences = response.data
+      })
+      .catch(err => {
+        return new Error(err.message)
+      })
+      .finally(() => {
+        this.isLoading = false
+      })
   },
-  methods: {},
+  methods: {
+    searchEvent() {
+      // eslint-disable-next-line
+      console.log(this.search)
+      
+      this.isLoading = true;
+      axios
+        .get("slfkjkdj")
+        .then((response) => {
+          this.condolences = response.data;
+        })
+        .catch(err => {
+          this.condolences = []
+          new Error(err.message)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
+    }
+  },
 };
 </script>
 
