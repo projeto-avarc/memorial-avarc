@@ -445,11 +445,13 @@ export default {
       axios
         .post("https://www.opememorial.net/api/Mensagems", this.condolencia)
         .then(() => {
-          this.isLoading = false;
-          this.$router.push("/condolencia/sucesso");
+          this.$router.push("/condolencia/sucesso")
         })
-        .catch(err => {
-          return new Error(err.message)
+        .catch(() => {
+          alert('Desculpe, houve algum erro! Não conseguimos prestar sua condolência, tente novamente mais tarde :(')
+        })
+        .finally(() => {
+          this.isLoading = false
         })
     },
     addProfileImage(e) {

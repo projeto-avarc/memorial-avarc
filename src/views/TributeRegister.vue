@@ -343,12 +343,14 @@ export default {
       axios
         .post("https://www.opememorial.net/api/Depoimentos", this.depoimento)
         .then(() => {
-          this.isLoading = false;
           this.$router.push("/condolencia/sucesso");
         })
-        .catch((err) => {
-          return new Error(err.message);
-        });
+        .catch(() => {
+          alert('Desculpe, houve algum erro! Não conseguimos prestar seu depoimento, tente novamente mais tarde :(')
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     },
     addProfileImage(e) {
       const files = e.target.files || e.dataTransfer.files;
