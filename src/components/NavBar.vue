@@ -65,8 +65,8 @@
                 network="facebook"
                 href="javascript:void(0)"
                 :url="value"
-                title="Memorial às vítimas do Covid-19"
-                quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                title="Memorial às Vítimas do Covid-19"
+                quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento"
                 class="mr-2"
               >
                 <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-10 inline-block">
@@ -75,7 +75,7 @@
                 network="twitter"
                 href="javascript:void(0)"
                 :url="value" 
-                title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento"
                 hashtags=""
                 class="mr-2"
               >
@@ -84,7 +84,7 @@
               <ShareNetwork
                 network="linkedin"
                 href="javascript:void(0)"
-                title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento"
                 :url="value"
                 class="mr-2"
               >
@@ -94,8 +94,8 @@
                 network="whatsapp"
                 href="javascript:void(0)"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19"
-                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                title="Memorial às Vítimas do Covid-19"
+                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento"
                 class="mr-2"
               >
                 <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-10 inline-block">
@@ -104,8 +104,8 @@
                 network="email"
                 href="javascript:void(0)"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19"
-                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                title="Memorial às Vítimas do Covid-19"
+                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento"
               >
                 <img src="../assets/images/icon-email.png" alt="Email" class="w-10 inline-block">
               </ShareNetwork>

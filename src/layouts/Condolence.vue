@@ -73,7 +73,7 @@
               <ShareNetwork
                 network="facebook"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19"
+                title="Memorial às Vítimas do Covid-19"
                 description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 hashtags="Memorial,Avarc"
@@ -84,7 +84,7 @@
               <ShareNetwork
                 network="twitter"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19"
+                title="Memorial às Vítimas do Covid-19"
                 hashtags="Memorial,Avarc"
                 class="mr-2"
               >
@@ -92,7 +92,7 @@
               </ShareNetwork>
               <ShareNetwork
                 network="linkedin"
-                title="Memorial às vítimas do Covid-19"
+                title="Memorial às Vítimas do Covid-19"
                 :url="value"
                 class="mr-2"
               >
@@ -101,7 +101,7 @@
               <ShareNetwork
                 network="whatsapp"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19"
+                title="Memorial às Vítimas do Covid-19"
                 description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
@@ -110,7 +110,7 @@
               <ShareNetwork
                 network="email"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19"
+                title="Memorial às Vítimas do Covid-19"
                 description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
               >
                 <img src="../assets/images/icon-email.png" alt="Email" class="w-12 inline-block">
