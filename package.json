@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^2.6.5",
+    "core-js": "^2.6.12",
     "gerador-validador-cpf": "^5.0.1",
     "qrcode.vue": "^1.7.0",
     "tailwindcss": "^1.9.4",
@@ -38,11 +38,13 @@
     "env": {
       "node": true
     },
+    "rules": {
+      "no-console": "off"
+    },
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
     }
