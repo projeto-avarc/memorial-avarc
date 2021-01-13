@@ -162,7 +162,7 @@ export default {
   },
   mounted () {
     axios
-      .get(`https://www.opememorial.net/api/Mensagems/id?id=${ this.$route.params.id }`)
+      .get(`https://www.memorialavarc.com.br/api/Mensagems/id?id=${ this.$route.params.id }`)
       .then(response => (this.condolencia = response.data))
       .finally(() => this.isLoading = false)
   }

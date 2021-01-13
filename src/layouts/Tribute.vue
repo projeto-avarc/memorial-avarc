@@ -188,7 +188,7 @@ export default {
   mounted() {
     axios
       .get(
-        `https://www.opememorial.net/api/Depoimentos/id?id=${this.$route.params.id}`
+        `https://www.memorialavarc.com.br/api/Depoimentos/id?id=${this.$route.params.id}`
       )
       .then((response) => (this.depoimento = response.data))
       .finally(() => (this.isLoading = false));

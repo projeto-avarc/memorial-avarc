@@ -341,7 +341,7 @@ export default {
 
       this.isLoading = true;
       axios
-        .post("https://www.opememorial.net/api/Depoimentos", this.depoimento)
+        .post("https://www.memorialavarc.com.br/api/Depoimentos", this.depoimento)
         .then(() => {
           this.$router.push("/condolencia/sucesso");
         })

@@ -24,7 +24,7 @@
           <CardCondolence :condolencia="condolence"></CardCondolence>
         </div>
       </div>
-      <div class="flex flex-col items-center space-y-3">
+      <div v-if="condolences.length > 0" class="flex flex-col items-center space-y-3">
         <paginate
           v-model="page"
           :page-count="10"
@@ -75,22 +75,12 @@ export default {
       fullPage: true,
       search: '',
       page: 1,
+      itemsPage: 6,
     };
   },
   mounted() {
     this.isLoading = true
-    this.getCondolencias(6, 1)
-    axios
-      .get("https://www.opememorial.net/api/Mensagems/status?status=Aprovado")
-      .then((response) => {
-        this.condolences = response.data
-      })
-      .catch(err => {
-        return new Error(err.message)
-      })
-      .finally(() => {
-        this.isLoading = false
-      })
+    this.getCondolencias(1)
   },
   methods: {
     searchEvent() {
@@ -113,19 +103,22 @@ export default {
     },
 
     clickCallback: function(pageNum) {
-      this.getCondolencias(6, pageNum);
+      this.getCondolencias(pageNum);
     },
 
-    getCondolencias: function(qtd, pagina) {
+    getCondolencias: function(currentPage) {
       this.isLoading = true;
       axios
-        .get(
-          `https://www.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${qtd}&pagina=${pagina}`
-        )
+        .get(`https://www.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${currentPage}`)
         .then((response) => {
-          this.condolences = response.data;
-          this.isLoading = false;
-        });
+          this.condolences = response.data
+        })
+        .catch(err => {
+          return new Error(err.message)
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
     },
   },
 };

@@ -83,7 +83,7 @@ export default {
     this.isLoading = true;
     this.getDepoimentos(6, 1)
     axios
-      .get("https://www.opememorial.net/api/Depoimentos/status?status=Aprovado")
+      .get("https://www.memorialavarc.com.br/api/Depoimentos/status?status=Aprovado")
       .then((response) => {
         this.depoimentos = response.data;
       })
