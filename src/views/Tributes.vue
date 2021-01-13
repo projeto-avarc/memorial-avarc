@@ -2,7 +2,8 @@
   <div class="container px-2 mb-20">
     <Jumbotron>
       <h3 class="text-2xl text-gray-900 font-semibold">
-        Depoimentos <span class="text-sm text-gray-800 align-middle">(Área da saúde)</span>
+        Depoimentos
+        <span class="text-sm text-gray-800 align-middle">(Área da saúde)</span>
       </h3>
       <hr />
 
@@ -17,6 +18,20 @@
         >
           <CardTribute :depoimento="depoimento"></CardTribute>
         </div>
+      </div>
+      <div class="flex flex-col items-center space-y-3">
+        <paginate
+          v-model="page"
+          :page-count="10"
+          :page-range="3"
+          :margin-pages="2"
+          :click-handler="clickCallback"
+          :prev-text="'Voltar'"
+          :next-text="'Proxima'"
+          :container-class="'pagination'"
+          :page-class="'page-item'"
+        >
+        </paginate>
       </div>
     </Jumbotron>
     <loading
@@ -53,18 +68,29 @@ export default {
       showModal: false,
       isLoading: false,
       fullPage: true,
+      page: 1,
     };
   },
   mounted() {
-    this.isLoading = true;
-    axios
-      .get("https://www.opememorial.net/api/Depoimentos/status?status=Aprovado")
-      .then((response) => {
-        this.depoimentos = response.data;
-        this.isLoading = false;
-      });
+    this.getDepoimentos(6, 1);
   },
-  methods: {},
+  methods: {
+    clickCallback: function(pageNum) {
+      this.getDepoimentos(6, pageNum);
+    },
+
+    getDepoimentos: function(qtd, pagina) {
+      this.isLoading = true;
+      axios
+        .get(
+          `https://www.memorialavarc.com.br/api/Depoimentos/status?status=Aprovado&qtd_registros=${qtd}&pagina=${pagina}`
+        )
+        .then((response) => {
+          this.depoimentos = response.data;
+          this.isLoading = false;
+        });
+    },
+  },
 };
 </script>
 
