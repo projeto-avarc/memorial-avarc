@@ -60,12 +60,12 @@
               </a>
             </router-link>
           </div>
-          <div class="sharing">
+          <div class="sharing relative pr-4 ml-5 mt-6 lg:ml-0 lg:mt-0">
               <ShareNetwork
                 network="facebook"
                 href="javascript:void(0)"
                 :url="value"
-                title="Memorial às vítimas do Covid-19"
+                title="Memorial às Vítimas do Covid-19"
                 quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
@@ -75,8 +75,7 @@
                 network="twitter"
                 href="javascript:void(0)"
                 :url="value" 
-                title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
-                hashtags=""
+                title="Memorial às vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
                 <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-10 inline-block">
@@ -84,7 +83,7 @@
               <ShareNetwork
                 network="linkedin"
                 href="javascript:void(0)"
-                title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                title="Memorial às vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 :url="value"
                 class="mr-2"
               >
@@ -94,21 +93,13 @@
                 network="whatsapp"
                 href="javascript:void(0)"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19"
+                title="Memorial às Vítimas do Covid-19"
                 description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
-                class="mr-2"
+                class=""
               >
                 <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-10 inline-block">
               </ShareNetwork>
-              <ShareNetwork
-                network="email"
-                href="javascript:void(0)"
-                :url="value" 
-                title="Memorial às vítimas do Covid-19"
-                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
-              >
-                <img src="../assets/images/icon-email.png" alt="Email" class="w-10 inline-block">
-              </ShareNetwork>
+              <span class="sh-text">Compartilhe nas redes sociais:</span>
             </div>
         </div>
       </div>
@@ -159,8 +150,12 @@ nav {
       transform: scale(1.05);
     }
   }
-  @media (max-width: 1023px) {
-    margin-top: 10px;
+  .sh-text {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    font-size: 11px;
+    font-weight: 100;
   }
 }
 a.link {
