@@ -63,17 +63,16 @@
           <div class="sharing">
               <ShareNetwork
                 network="facebook"
+                href="javascript:void(0)"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19"
-                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
-                hashtags=""
                 class="mr-2"
               >
                 <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-10 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="twitter"
+                href="javascript:void(0)"
                 :url="value" 
                 title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 hashtags=""
@@ -83,6 +82,7 @@
               </ShareNetwork>
               <ShareNetwork
                 network="linkedin"
+                href="javascript:void(0)"
                 title="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 :url="value"
                 class="mr-2"
@@ -91,6 +91,7 @@
               </ShareNetwork>
               <ShareNetwork
                 network="whatsapp"
+                href="javascript:void(0)"
                 :url="value" 
                 title="Memorial às vítimas do Covid-19"
                 description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
@@ -100,6 +101,7 @@
               </ShareNetwork>
               <ShareNetwork
                 network="email"
+                href="javascript:void(0)"
                 :url="value" 
                 title="Memorial às vítimas do Covid-19"
                 description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
@@ -125,6 +127,9 @@ export default {
     changeNav() {
       this.showNav = !this.showNav;
     },
+    preventLink(event) {
+      event.preventDefault()
+    }
   },
   mounted() {
     this.showNav = window.innerWidth < 1024 ? false : true;
