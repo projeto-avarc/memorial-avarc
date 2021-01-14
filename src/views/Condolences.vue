@@ -84,12 +84,11 @@ export default {
   },
   methods: {
     searchEvent() {
-      // eslint-disable-next-line
-      console.log(this.search)
-      
-      this.isLoading = true;
+      this.isLoading = true
+      let name = this.search.split(' ')[0]
+
       axios
-        .get("slfkjkdj")
+        .get(`https://www.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}`)
         .then((response) => {
           this.condolences = response.data;
         })
@@ -107,7 +106,7 @@ export default {
     },
 
     getCondolencias: function(currentPage) {
-      this.isLoading = true;
+      this.isLoading = true
       axios
         .get(`https://www.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${currentPage}`)
         .then((response) => {

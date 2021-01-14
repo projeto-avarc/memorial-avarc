@@ -26,7 +26,7 @@
           <CardTribute :depoimento="depoimento"></CardTribute>
         </div>
       </div>
-      <div class="flex flex-col items-center space-y-3">
+      <div v-if="depoimentos.length > 0" class="flex flex-col items-center space-y-3">
         <paginate
           v-model="page"
           :page-count="10"
@@ -77,31 +77,20 @@ export default {
       fullPage: true,
       search: '',
       page: 1,
+      itemsPage: 6,
     };
   },
   mounted() {
     this.isLoading = true;
-    this.getDepoimentos(6, 1)
-    axios
-      .get("https://www.memorialavarc.com.br/api/Depoimentos/status?status=Aprovado")
-      .then((response) => {
-        this.depoimentos = response.data;
-      })
-      .catch(err => {
-        return new Error(err.message)
-      })
-      .finally(() => {
-        this.isLoading = false
-      })
+    this.getDepoimentos(1)
   },
   methods: {
     searchEvent() {
-      // eslint-disable-next-line
-      console.log(this.search)
-      
-      this.isLoading = true;
+      this.isLoading = true
+      let name = this.search.split(' ')[0]
+
       axios
-        .get("slfkjkdj")
+        .get(`https://www.memorialavarc.com.br/api/Depoimentos/Nome?nome=${name}&qtd_registros=${this.itemsPage}`)
         .then((response) => {
           this.depoimentos = response.data;
         })
@@ -115,13 +104,13 @@ export default {
     },
 
     clickCallback: function(pageNum) {
-      this.getDepoimentos(6, pageNum);
+      this.getCondolencias(pageNum)
     },
 
-    getDepoimentos: function(qtd, pagina) {
+    getDepoimentos: function(currentPage) {
       this.isLoading = true;
       axios
-        .get(`https://www.memorialavarc.com.br/api/Depoimentos/status?status=Aprovado&qtd_registros=${qtd}&pagina=${pagina}`)
+        .get(`https://www.memorialavarc.com.br/api/Depoimentos/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${currentPage}`)
         .then((response) => {
           this.depoimentos = response.data;
           this.isLoading = false;
