@@ -4,9 +4,18 @@
       <div class="search-wrapper flex items-baseline">
         <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
         <div class="ml-auto">
-          <input class="inline border rounded-sm px-2" type="text" v-model="search" placeholder="Buscar por nome.."/>
+          <input
+            class="inline border rounded-sm px-2"
+            type="text"
+            v-model="search"
+            placeholder="Buscar por nome.."
+          />
           <button class="inline p-3" @click="searchEvent()">
-            <img class="w-4" src="../assets/images/icon-search.svg" alt="Ícone de busca">
+            <img
+              class="w-4"
+              src="../assets/images/icon-search.svg"
+              alt="Ícone de busca"
+            />
           </button>
         </div>
       </div>
@@ -24,10 +33,10 @@
           <CardCondolence :condolencia="condolence"></CardCondolence>
         </div>
       </div>
-      <div v-if="condolences.length > 0" class="flex flex-col items-center space-y-3">
+      <div class="flex flex-col items-center space-y-3">
         <paginate
           v-model="page"
-          :page-count="10"
+          :page-count="pageCount"
           :page-range="3"
           :margin-pages="2"
           :click-handler="clickCallback"
@@ -73,32 +82,35 @@ export default {
       showModal: false,
       isLoading: false,
       fullPage: true,
-      search: '',
+      search: "",
       page: 1,
       itemsPage: 6,
+      pageCount: 1,
     };
   },
   mounted() {
-    this.isLoading = true
-    this.getCondolencias(1)
+    this.isLoading = true;
+    this.getCondolencias(1);
   },
   methods: {
     searchEvent() {
-      this.isLoading = true
-      let name = this.search.split(' ')[0]
+      this.isLoading = true;
+      let name = this.search.split(" ")[0];
 
       axios
-        .get(`https://www.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}`)
+        .get(
+          `https://www.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=100`
+        )
         .then((response) => {
           this.condolences = response.data;
         })
-        .catch(err => {
-          this.condolences = []
-          new Error(err.message)
+        .catch((err) => {
+          this.condolences = [];
+          new Error(err.message);
         })
         .finally(() => {
-          this.isLoading = false
-        })
+          this.isLoading = false;
+        });
     },
 
     clickCallback: function(pageNum) {
@@ -106,18 +118,21 @@ export default {
     },
 
     getCondolencias: function(currentPage) {
-      this.isLoading = true
+      this.isLoading = true;
       axios
-        .get(`https://www.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${currentPage}`)
+        .get(
+          `https://www.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${currentPage}`
+        )
         .then((response) => {
-          this.condolences = response.data
+          this.condolences = response.data;
+          this.pageCount = response.data[0].qtd_paginas;
         })
-        .catch(err => {
-          return new Error(err.message)
+        .catch((err) => {
+          return new Error(err.message);
         })
         .finally(() => {
-          this.isLoading = false
-        })
+          this.isLoading = false;
+        });
     },
   },
 };
