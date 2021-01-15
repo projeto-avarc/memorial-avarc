@@ -112,7 +112,7 @@ export default {
   data() {
     return {
       showNav: true,
-      value: 'www.memorialavarc.com.br',
+      value: 'www.memorialavarc.com.br/#/',
     };
   },
   methods: {
