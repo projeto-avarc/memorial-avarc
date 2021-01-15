@@ -443,7 +443,7 @@ export default {
       this.isLoading = true;
 
       axios
-        .post("https://www.memorialavarc.com.br/api/Mensagems", this.condolencia)
+        .post("http://celestesantos-001-site2.etempurl.com/api/Mensagems", this.condolencia)
         .then(() => {
           this.$router.push("/condolencia/sucesso")
         })

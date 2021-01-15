@@ -161,7 +161,7 @@ export default {
   mounted() {
     axios
       .get(
-        `https://www.memorialavarc.com.br/api/Depoimentos/id?id=${this.$route.params.id}`
+        `http://celestesantos-001-site2.etempurl.com/api/Depoimentos/id?id=${this.$route.params.id}`
       )
       .then((response) => (this.depoimento = response.data))
       .finally(() => (this.isLoading = false));

@@ -100,21 +100,21 @@ export default {
   },
   mounted() {
     this.isLoading = true;
-    this.getDepoimentos(`https://www.memorialavarc.com.br/api/Depoimentos/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`);
+    this.getDepoimentos(`http://celestesantos-001-site2.etempurl.com/api/Depoimentos/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`);
   },
   methods: {
     searchEvent() {
       this.isSearch = true;
       let name = this.search.split(" ")[0];
-      this.getDepoimentos(`https://www.memorialavarc.com.br/api/Depoimentos/Nome?nome=${name}&qtd_registros=${this.itemsPage}&pagina=1`);
+      this.getDepoimentos(`http://celestesantos-001-site2.etempurl.com/api/Depoimentos/Nome?nome=${name}&qtd_registros=${this.itemsPage}&pagina=1`);
     },
 
     clickCallback: function(pageNum) {
       let route = ''
       if(this.isSearch) {
-        route = `https://www.memorialavarc.com.br/api/Depoimentos/Nome?nome=${name}&qtd_registros=${this.itemsPage}&pagina=${pageNum}`
+        route = `http://celestesantos-001-site2.etempurl.com/api/Depoimentos/Nome?nome=${name}&qtd_registros=${this.itemsPage}&pagina=${pageNum}`
       } else {
-        route = `https://www.memorialavarc.com.br/api/Depoimentos/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${pageNum}`
+        route = `http://celestesantos-001-site2.etempurl.com/api/Depoimentos/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${pageNum}`
       }
       this.getDepoimentos(route)
     },

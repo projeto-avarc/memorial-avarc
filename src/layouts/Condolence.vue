@@ -155,7 +155,7 @@ export default {
   },
   mounted () {
     axios
-      .get(`https://www.memorialavarc.com.br/api/Mensagems/id?id=${ this.$route.params.id }`)
+      .get(`http://celestesantos-001-site2.etempurl.com/api/Mensagems/id?id=${ this.$route.params.id }`)
       .then(response => (this.condolencia = response.data))
       .finally(() => this.isLoading = false)
   }

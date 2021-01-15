@@ -341,7 +341,7 @@ export default {
 
       this.isLoading = true;
       axios
-        .post("https://www.memorialavarc.com.br/api/Depoimentos", this.depoimento)
+        .post("http://celestesantos-001-site2.etempurl.com/api/Depoimentos", this.depoimento)
         .then(() => {
           this.$router.push("/condolencia/sucesso");
         })
