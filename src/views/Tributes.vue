@@ -1,14 +1,14 @@
 <template>
   <div class="container px-2 mb-20">
     <Jumbotron>
-      <div class="search-wrapper flex items-baseline">
+      <div class="search-wrapper flex items-baseline flex-col md:flex-row">
         <h3 class="text-2xl text-gray-900 font-semibold">
           Depoimentos
-          <span class="text-sm text-gray-800 align-middle"
+          <span class="text-sm text-gray-800 align-middle block md:inline"
             >(Área da saúde)</span
           >
         </h3>
-        <div class="ml-auto">
+        <div class="md:ml-auto">
           <input
             class="inline border rounded-sm px-2 outline-none"
             type="text"

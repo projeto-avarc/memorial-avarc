@@ -1,9 +1,9 @@
 <template>
   <div class="container px-2 mb-20">
     <Jumbotron>
-      <div class="search-wrapper flex items-baseline">
+      <div class="search-wrapper flex items-baseline flex-col sm:flex-row">
         <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
-        <div class="ml-auto">
+        <div class="sm:ml-auto">
           <input
             class="inline border rounded-sm px-2 outline-none"
             type="text"
