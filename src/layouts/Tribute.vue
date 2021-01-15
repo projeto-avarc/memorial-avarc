@@ -82,16 +82,24 @@
                 quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
-                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-10 inline-block">
+                <img
+                  src="../assets/images/icon-facebook.png"
+                  alt="Facebook"
+                  class="w-10 inline-block"
+                />
               </ShareNetwork>
               <ShareNetwork
                 network="twitter"
                 href="javascript:void(0)"
-                :url="value" 
+                :url="value"
                 title="Memorial às vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
-                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-10 inline-block">
+                <img
+                  src="../assets/images/icon-twitter.png"
+                  alt="Twitter"
+                  class="w-10 inline-block"
+                />
               </ShareNetwork>
               <ShareNetwork
                 network="linkedin"
@@ -100,17 +108,25 @@
                 :url="value"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-10 inline-block">
+                <img
+                  src="../assets/images/icon-linkedin.png"
+                  alt="Linkedin"
+                  class="w-10 inline-block"
+                />
               </ShareNetwork>
               <ShareNetwork
                 network="whatsapp"
                 href="javascript:void(0)"
-                :url="value" 
+                :url="value"
                 title="Memorial às Vítimas do Covid-19"
                 description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class=""
               >
-                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-10 inline-block">
+                <img
+                  src="../assets/images/icon-whatsapp.png"
+                  alt="Whatsapp"
+                  class="w-10 inline-block"
+                />
               </ShareNetwork>
             </div>
           </div>
@@ -161,7 +177,7 @@ export default {
   mounted() {
     axios
       .get(
-        `http://celestesantos-001-site2.etempurl.com/api/Depoimentos/id?id=${this.$route.params.id}`
+        `http://api.memorialavarc.com.br/api/Depoimentos/id?id=${this.$route.params.id}`
       )
       .then((response) => (this.depoimento = response.data))
       .finally(() => (this.isLoading = false));

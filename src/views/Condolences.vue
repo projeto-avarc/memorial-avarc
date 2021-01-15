@@ -33,7 +33,10 @@
           <CardCondolence :condolencia="condolence"></CardCondolence>
         </div>
       </div>
-      <div v-show="condolences.length > 0" class="flex flex-col items-center space-y-3">
+      <div
+        v-show="condolences.length > 0"
+        class="flex flex-col items-center space-y-3"
+      >
         <paginate
           v-model="page"
           :page-count="pageCount"
@@ -91,28 +94,34 @@ export default {
   },
   mounted() {
     this.isLoading = true;
-    this.getCondolencias(`http://celestesantos-001-site2.etempurl.com/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`);
+    this.getCondolencias(
+      `http://api.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`
+    );
   },
   methods: {
     searchEvent() {
       this.isSearch = true;
       let name = this.search.trim().split(" ")[0];
-      if(name === '') {
-        this.search = ''
-        this.getCondolencias(`http://celestesantos-001-site2.etempurl.com/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`);
+      if (name === "") {
+        this.search = "";
+        this.getCondolencias(
+          `http://api.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`
+        );
       } else {
-        this.getCondolencias(`http://celestesantos-001-site2.etempurl.com/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=1`);
+        this.getCondolencias(
+          `http://api.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=1`
+        );
       }
     },
 
     clickCallback: function(pageNum) {
-      let route = ''
-      if(this.isSearch) {
-        route = `http://celestesantos-001-site2.etempurl.com/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=${pageNum}`
+      let route = "";
+      if (this.isSearch) {
+        route = `http://api.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=${pageNum}`;
       } else {
-        route = `http://celestesantos-001-site2.etempurl.com/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${pageNum}`
+        route = `http://api.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${pageNum}`;
       }
-      this.getCondolencias(route)
+      this.getCondolencias(route);
     },
 
     getCondolencias: function(route) {
@@ -124,7 +133,7 @@ export default {
           this.pageCount = response.data[0].qtd_paginas;
         })
         .catch((err) => {
-          console.log(new Error(err.message))
+          console.log(new Error(err.message));
         })
         .finally(() => {
           this.isLoading = false;

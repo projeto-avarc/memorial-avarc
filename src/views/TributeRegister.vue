@@ -80,12 +80,7 @@
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
               <label for="rg">RG</label>
-              <input
-                type="text"
-                v-model="depoimento.rg"
-                id="rg"
-                name="rg"
-              />
+              <input type="text" v-model="depoimento.rg" id="rg" name="rg" />
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -341,16 +336,21 @@ export default {
 
       this.isLoading = true;
       axios
-        .post("http://celestesantos-001-site2.etempurl.com/api/Depoimentos", this.depoimento)
+        .post(
+          "http://api.memorialavarc.com.br/api/Depoimentos",
+          this.depoimento
+        )
         .then(() => {
           this.$router.push("/condolencia/sucesso");
         })
         .catch(() => {
-          alert('Desculpe, houve algum erro! Não conseguimos prestar seu depoimento, tente novamente mais tarde :(')
+          alert(
+            "Desculpe, houve algum erro! Não conseguimos prestar seu depoimento, tente novamente mais tarde :("
+          );
         })
         .finally(() => {
-          this.isLoading = false
-        })
+          this.isLoading = false;
+        });
     },
     addProfileImage(e) {
       const files = e.target.files || e.dataTransfer.files;

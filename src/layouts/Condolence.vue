@@ -2,48 +2,55 @@
   <div>
     <NavBar class="shadow-sm"></NavBar>
     <div class="container mx-auto max-w-screen-md">
-      <div
-        class="box py-8 px-4 sm:py-16 sm:px-10"
-        v-if="condolencia"
-      >
-
-        <div class="flex items-center max-w-lg m-auto justify-between flex-col sm:flex-row">
+      <div class="box py-8 px-4 sm:py-16 sm:px-10" v-if="condolencia">
+        <div
+          class="flex items-center max-w-lg m-auto justify-between flex-col sm:flex-row"
+        >
           <div
             class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
           >
-            <span 
+            <span
               v-if="condolencia.vitima.imagem"
               class="rounded-full mx-auto md:mx-0 md:mr-6 picture"
-              :style="{'background-image': `url(data:image/jpeg;base64,${condolencia.vitima.imagem})`}">
+              :style="{
+                'background-image': `url(data:image/jpeg;base64,${condolencia.vitima.imagem})`,
+              }"
+            >
             </span>
-            <span 
-              v-else
-              class="rounded-full mx-auto md:mx-0 md:mr-6 picture">
+            <span v-else class="rounded-full mx-auto md:mx-0 md:mr-6 picture">
             </span>
           </div>
           <div class="px-2 py-5 text-center md:ml-12">
             <h4 class="text-xl font-semibold text-right">
-              {{
-                condolencia.vitima.nome +
-                " " +
-                condolencia.vitima.sobrenome
-              }}
+              {{ condolencia.vitima.nome + " " + condolencia.vitima.sobrenome }}
             </h4>
             <p
               class="text-white font-semibold text-right text-sm"
-              v-if="condolencia.vitima.endereco_cidade || condolencia.vitima.endereco_estado"
+              v-if="
+                condolencia.vitima.endereco_cidade ||
+                  condolencia.vitima.endereco_estado
+              "
             >
-              {{`
+              {{
+                `
                 ${(() => {
-                  if (condolencia.vitima.endereco_cidade && condolencia.vitima.endereco_estado) {
-                    return condolencia.vitima.endereco_cidade + "/" + condolencia.vitima.endereco_estado
+                  if (
+                    condolencia.vitima.endereco_cidade &&
+                    condolencia.vitima.endereco_estado
+                  ) {
+                    return (
+                      condolencia.vitima.endereco_cidade +
+                      "/" +
+                      condolencia.vitima.endereco_estado
+                    );
                   } else if (condolencia.vitima.endereco_cidade) {
-                    return condolencia.vitima.endereco_cidade
+                    return condolencia.vitima.endereco_cidade;
                   } else {
-                    return condolencia.vitima.endereco_estado
+                    return condolencia.vitima.endereco_estado;
                   }
                 })()}
-              `}}
+              `
+              }}
             </p>
           </div>
         </div>
@@ -57,16 +64,23 @@
           <span
             >Por
             <strong>{{
-              condolencia.pessoa.nome +
-              " " +
-              condolencia.pessoa.sobrenome
+              condolencia.pessoa.nome + " " + condolencia.pessoa.sobrenome
             }}</strong></span
           >
-          <span v-if="condolencia.pessoa.sentimento" class="text-sm block">com {{condolencia.pessoa.sentimento}}.</span>
+          <span v-if="condolencia.pessoa.sentimento" class="text-sm block"
+            >com {{ condolencia.pessoa.sentimento }}.</span
+          >
         </div>
 
-        <div class="flex justify-center items-center md:items-end flex-col sm:flex-row mt-10 mb-4">
-          <qrcode-vue :value="value" :size="100" level="H" class="sm:mr-6 mb-8 sm:mb-0"></qrcode-vue>
+        <div
+          class="flex justify-center items-center md:items-end flex-col sm:flex-row mt-10 mb-4"
+        >
+          <qrcode-vue
+            :value="value"
+            :size="100"
+            level="H"
+            class="sm:mr-6 mb-8 sm:mb-0"
+          ></qrcode-vue>
           <div class="md:mb-1">
             <p class="text-xs mb-1">Compartilhe nas redes sociais:</p>
             <div>
@@ -78,16 +92,24 @@
                 quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
-                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-10 inline-block">
+                <img
+                  src="../assets/images/icon-facebook.png"
+                  alt="Facebook"
+                  class="w-10 inline-block"
+                />
               </ShareNetwork>
               <ShareNetwork
                 network="twitter"
                 href="javascript:void(0)"
-                :url="value" 
+                :url="value"
                 title="Memorial às vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
-                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-10 inline-block">
+                <img
+                  src="../assets/images/icon-twitter.png"
+                  alt="Twitter"
+                  class="w-10 inline-block"
+                />
               </ShareNetwork>
               <ShareNetwork
                 network="linkedin"
@@ -96,17 +118,25 @@
                 :url="value"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-10 inline-block">
+                <img
+                  src="../assets/images/icon-linkedin.png"
+                  alt="Linkedin"
+                  class="w-10 inline-block"
+                />
               </ShareNetwork>
               <ShareNetwork
                 network="whatsapp"
                 href="javascript:void(0)"
-                :url="value" 
+                :url="value"
                 title="Memorial às Vítimas do Covid-19"
                 description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class=""
               >
-                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-10 inline-block">
+                <img
+                  src="../assets/images/icon-whatsapp.png"
+                  alt="Whatsapp"
+                  class="w-10 inline-block"
+                />
               </ShareNetwork>
             </div>
           </div>
@@ -123,43 +153,46 @@
         >
       </div>
     </div>
-    <loading 
-      :active.sync="isLoading" 
-      :can-cancel="false" 
-      :is-full-page="fullPage">
+    <loading
+      :active.sync="isLoading"
+      :can-cancel="false"
+      :is-full-page="fullPage"
+    >
     </loading>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import NavBar from "@/components/NavBar.vue"
-import QrcodeVue from 'qrcode.vue'
-import Loading from 'vue-loading-overlay'
-import 'vue-loading-overlay/dist/vue-loading.css'
+import axios from "axios";
+import NavBar from "@/components/NavBar.vue";
+import QrcodeVue from "qrcode.vue";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
-  name: 'condolencia',
+  name: "condolencia",
   components: {
     NavBar,
     QrcodeVue,
-    Loading
+    Loading,
   },
-  data () {
+  data() {
     return {
       condolencia: null,
       isLoading: true,
       fullPage: true,
       value: window.location.href,
-    }
+    };
   },
-  mounted () {
+  mounted() {
     axios
-      .get(`http://celestesantos-001-site2.etempurl.com/api/Mensagems/id?id=${ this.$route.params.id }`)
-      .then(response => (this.condolencia = response.data))
-      .finally(() => this.isLoading = false)
-  }
-}
+      .get(
+        `http://api.memorialavarc.com.br/api/Mensagems/id?id=${this.$route.params.id}`
+      )
+      .then((response) => (this.condolencia = response.data))
+      .finally(() => (this.isLoading = false));
+  },
+};
 </script>
 
 <style scoped lang="scss">

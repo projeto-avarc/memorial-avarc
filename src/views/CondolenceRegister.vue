@@ -60,8 +60,7 @@
                 name="vitima_cpf"
                 v-mask="'###.###.###-##'"
                 :class="{
-                  'border-red-700':
-                    warning && $v.condolencia.vitima.cpf.$error,
+                  'border-red-700': warning && $v.condolencia.vitima.cpf.$error,
                 }"
               />
 
@@ -209,8 +208,7 @@
                 name="cpf"
                 v-mask="'###.###.###-##'"
                 :class="{
-                  'border-red-700':
-                    warning && $v.condolencia.pessoa.cpf.$error,
+                  'border-red-700': warning && $v.condolencia.pessoa.cpf.$error,
                 }"
               />
               <span
@@ -277,7 +275,12 @@
                     warning && $v.condolencia.pessoa.sentimento.$error,
                 }"
               />
-              <p class="text-sm text-gray-600 text-right mt-1 absolute right-0 mr-2" v-if="condolencia.pessoa.sentimento">com {{condolencia.pessoa.sentimento}}.</p>
+              <p
+                class="text-sm text-gray-600 text-right mt-1 absolute right-0 mr-2"
+                v-if="condolencia.pessoa.sentimento"
+              >
+                com {{ condolencia.pessoa.sentimento }}.
+              </p>
             </div>
           </div>
 
@@ -306,7 +309,13 @@
               required
             />
             <p class="text-gray-600 text-sm cursor-default">
-              Li e concordo com a <router-link to="/politica-de-privacidade" class="underline" target="_blank">política de privacidade</router-link>.
+              Li e concordo com a
+              <router-link
+                to="/politica-de-privacidade"
+                class="underline"
+                target="_blank"
+                >política de privacidade</router-link
+              >.
             </p>
           </div>
         </div>
@@ -342,37 +351,37 @@
     <loading
       :active.sync="isLoading"
       :can-cancel="false"
-      :is-full-page="fullPage">
+      :is-full-page="fullPage"
+    >
     </loading>
   </div>
 </template>
 
 <script>
 // import Button from "@/components/Button.vue";
-import axios from "axios"
-import { required, email } from "vuelidate/lib/validators"
-import Jumbotron from '@/components/Jumbotron'
-import { validate } from 'gerador-validador-cpf'
+import axios from "axios";
+import { required, email } from "vuelidate/lib/validators";
+import Jumbotron from "@/components/Jumbotron";
+import { validate } from "gerador-validador-cpf";
 
 // Import component
-import Loading from 'vue-loading-overlay';
+import Loading from "vue-loading-overlay";
 // Import stylesheet
-import 'vue-loading-overlay/dist/vue-loading.css';
+import "vue-loading-overlay/dist/vue-loading.css";
 
-
-const cpfValidator = value => {
+const cpfValidator = (value) => {
   if (!value || value.length <= 0) {
-    return true
+    return true;
   }
 
-  return validate(value)
-}
+  return validate(value);
+};
 
 export default {
   name: "condolenceRegister",
   components: {
     Jumbotron,
-    Loading
+    Loading,
   },
   data() {
     return {
@@ -414,7 +423,7 @@ export default {
       vitima: {
         nome: { required },
         sobrenome: { required },
-        cpf: { valid: cpfValidator},
+        cpf: { valid: cpfValidator },
         rg: {},
         endereco_rua: {},
         endereco_cidade: {},
@@ -443,50 +452,52 @@ export default {
       this.isLoading = true;
 
       axios
-        .post("http://celestesantos-001-site2.etempurl.com/api/Mensagems", this.condolencia)
+        .post("http://api.memorialavarc.com.br/api/Mensagems", this.condolencia)
         .then(() => {
-          this.$router.push("/condolencia/sucesso")
+          this.$router.push("/condolencia/sucesso");
         })
         .catch(() => {
-          alert('Desculpe, houve algum erro! Não conseguimos prestar sua condolência, tente novamente mais tarde :(')
+          alert(
+            "Desculpe, houve algum erro! Não conseguimos prestar sua condolência, tente novamente mais tarde :("
+          );
         })
         .finally(() => {
-          this.isLoading = false
-        })
+          this.isLoading = false;
+        });
     },
     addProfileImage(e) {
       const files = e.target.files || e.dataTransfer.files;
-      const file = files[0]
+      const file = files[0];
 
       const regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png)$/;
 
       if (!file) {
-        return
+        return;
       }
 
-      this.fileExceededMaxSize = file.size > 1000000
+      this.fileExceededMaxSize = file.size > 1000000;
 
       if (this.fileExceededMaxSize) {
-        e.target.value = ''
-        return
+        e.target.value = "";
+        return;
       }
 
-      const isValidImage = regex.test(file.name.toLowerCase())
+      const isValidImage = regex.test(file.name.toLowerCase());
 
-      if (isValidImage){
+      if (isValidImage) {
         this.createBase64Image(files[0]);
       }
     },
     createBase64Image(fileObject) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        this.condolencia.vitima.imagem = e.target.result.split(',')[1];
+        this.condolencia.vitima.imagem = e.target.result.split(",")[1];
       };
       reader.readAsDataURL(fileObject);
     },
     removeImage: function() {
-      this.condolencia.vitima.imagem = ""
-      document.getElementById('vitima_imagem').value = ''
+      this.condolencia.vitima.imagem = "";
+      document.getElementById("vitima_imagem").value = "";
     },
     goAhead() {
       this.$v.$touch();
@@ -499,7 +510,7 @@ export default {
     },
     goBack() {
       this.vitima = !this.vitima;
-    }
+    },
   },
 };
 </script>
