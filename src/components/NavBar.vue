@@ -64,7 +64,7 @@
               <ShareNetwork
                 network="facebook"
                 href="javascript:void(0)"
-                :url="value"
+                url="www.memorialavarc.com.br/#/"
                 title="Memorial às Vítimas do Covid-19"
                 quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
