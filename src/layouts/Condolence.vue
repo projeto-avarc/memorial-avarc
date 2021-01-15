@@ -68,52 +68,45 @@
         <div class="flex justify-center items-center md:items-end flex-col sm:flex-row mt-10 mb-4">
           <qrcode-vue :value="value" :size="100" level="H" class="sm:mr-6 mb-8 sm:mb-0"></qrcode-vue>
           <div class="md:mb-1">
-            <p class="text-sm mb-1">Compartilhar:</p>
+            <p class="text-xs mb-1">Compartilhe nas redes sociais:</p>
             <div>
               <ShareNetwork
                 network="facebook"
-                :url="value" 
+                href="javascript:void(0)"
+                :url="value"
                 title="Memorial às Vítimas do Covid-19"
-                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 quote="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
-                hashtags="Memorial,Avarc"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-12 inline-block">
+                <img src="../assets/images/icon-facebook.png" alt="Facebook" class="w-10 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="twitter"
+                href="javascript:void(0)"
                 :url="value" 
-                title="Memorial às Vítimas do Covid-19"
-                hashtags="Memorial,Avarc"
+                title="Memorial às vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
-                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-12 inline-block">
+                <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-10 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="linkedin"
-                title="Memorial às Vítimas do Covid-19"
+                href="javascript:void(0)"
+                title="Memorial às vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 :url="value"
                 class="mr-2"
               >
-                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-12 inline-block">
+                <img src="../assets/images/icon-linkedin.png" alt="Linkedin" class="w-10 inline-block">
               </ShareNetwork>
               <ShareNetwork
                 network="whatsapp"
+                href="javascript:void(0)"
                 :url="value" 
                 title="Memorial às Vítimas do Covid-19"
                 description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
-                class="mr-2"
+                class=""
               >
-                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-12 inline-block">
-              </ShareNetwork>
-              <ShareNetwork
-                network="email"
-                :url="value" 
-                title="Memorial às Vítimas do Covid-19"
-                description="O Memorial visa criar espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
-              >
-                <img src="../assets/images/icon-email.png" alt="Email" class="w-12 inline-block">
+                <img src="../assets/images/icon-whatsapp.png" alt="Whatsapp" class="w-10 inline-block">
               </ShareNetwork>
             </div>
           </div>
