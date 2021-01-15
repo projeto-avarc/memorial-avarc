@@ -5,7 +5,7 @@
         <h3 class="text-2xl text-gray-900 font-semibold">Condolências</h3>
         <div class="ml-auto">
           <input
-            class="inline border rounded-sm px-2"
+            class="inline border rounded-sm px-2 outline-none"
             type="text"
             v-model="search"
             placeholder="Buscar por nome.."
@@ -33,7 +33,7 @@
           <CardCondolence :condolencia="condolence"></CardCondolence>
         </div>
       </div>
-      <div class="flex flex-col items-center space-y-3">
+      <div v-show="condolences.length > 0" class="flex flex-col items-center space-y-3">
         <paginate
           v-model="page"
           :page-count="pageCount"
@@ -83,52 +83,43 @@ export default {
       isLoading: false,
       fullPage: true,
       search: "",
+      isSearch: false,
       page: 1,
-      itemsPage: 6,
+      itemsPage: 12,
       pageCount: 1,
     };
   },
   mounted() {
     this.isLoading = true;
-    this.getCondolencias(1);
+    this.getCondolencias(`https://www.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`);
   },
   methods: {
     searchEvent() {
-      this.isLoading = true;
+      this.isSearch = true;
       let name = this.search.split(" ")[0];
-
-      axios
-        .get(
-          `https://www.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=100`
-        )
-        .then((response) => {
-          this.condolences = response.data;
-        })
-        .catch((err) => {
-          this.condolences = [];
-          new Error(err.message);
-        })
-        .finally(() => {
-          this.isLoading = false;
-        });
+      this.getCondolencias(`https://www.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=1`);
     },
 
     clickCallback: function(pageNum) {
-      this.getCondolencias(pageNum);
+      let route = ''
+      if(this.isSearch) {
+        route = `https://www.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=${pageNum}`
+      } else {
+        route = `https://www.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${pageNum}`
+      }
+      this.getCondolencias(route)
     },
 
-    getCondolencias: function(currentPage) {
+    getCondolencias: function(route) {
       this.isLoading = true;
       axios
-        .get(
-          `https://www.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${currentPage}`
-        )
+        .get(route)
         .then((response) => {
           this.condolences = response.data;
           this.pageCount = response.data[0].qtd_paginas;
         })
         .catch((err) => {
-          return new Error(err.message);
+          console.log(new Error(err.message))
         })
         .finally(() => {
           this.isLoading = false;
