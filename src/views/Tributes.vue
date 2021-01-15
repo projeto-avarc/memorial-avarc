@@ -105,8 +105,14 @@ export default {
   methods: {
     searchEvent() {
       this.isSearch = true;
-      let name = this.search.split(" ")[0];
-      this.getDepoimentos(`http://celestesantos-001-site2.etempurl.com/api/Depoimentos/Nome?nome=${name}&qtd_registros=${this.itemsPage}&pagina=1`);
+      let name = this.search.trim().split(" ")[0];
+      if(name === '') {
+        this.search = ''
+        this.getDepoimentos(`http://celestesantos-001-site2.etempurl.com/api/Depoimentos/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`);
+      } else {
+        this.getDepoimentos(`http://celestesantos-001-site2.etempurl.com/api/Depoimentos/Nome?nome=${name}&qtd_registros=${this.itemsPage}&pagina=1`);
+      }
+      
     },
 
     clickCallback: function(pageNum) {

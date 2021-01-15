@@ -96,8 +96,13 @@ export default {
   methods: {
     searchEvent() {
       this.isSearch = true;
-      let name = this.search.split(" ")[0];
-      this.getCondolencias(`http://celestesantos-001-site2.etempurl.com/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=1`);
+      let name = this.search.trim().split(" ")[0];
+      if(name === '') {
+        this.search = ''
+        this.getCondolencias(`http://celestesantos-001-site2.etempurl.com/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`);
+      } else {
+        this.getCondolencias(`http://celestesantos-001-site2.etempurl.com/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=1`);
+      }
     },
 
     clickCallback: function(pageNum) {
