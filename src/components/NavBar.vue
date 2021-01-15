@@ -75,7 +75,7 @@
                 network="twitter"
                 href="javascript:void(0)"
                 :url="value" 
-                title="Memorial às vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                title="Memorial às Vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 class="mr-2"
               >
                 <img src="../assets/images/icon-twitter.png" alt="Twitter" class="w-10 inline-block">
@@ -83,7 +83,7 @@
               <ShareNetwork
                 network="linkedin"
                 href="javascript:void(0)"
-                title="Memorial às vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
+                title="Memorial às Vítimas do Covid-19, espaço de luto compartilhado e auxiliar na resiliência transformativa dos indivíduos, famílias e sociedade. Deixe uma mensagem para um amigo ou ente querido, e eternize esse sentimento."
                 :url="value"
                 class="mr-2"
               >
