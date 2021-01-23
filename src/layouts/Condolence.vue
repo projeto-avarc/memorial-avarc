@@ -75,12 +75,9 @@
         <div
           class="flex justify-center items-center md:items-end flex-col sm:flex-row mt-10 mb-4"
         >
-          <qrcode-vue
-            :value="value"
-            :size="100"
-            level="H"
-            class="sm:mr-6 mb-8 sm:mb-0"
-          ></qrcode-vue>
+          <span class="QRCode">
+            <img class="sm:mr-6 mb-8 sm:mb-0" width="100" :src="`http://api.memorialavarc.com.br/api/QRCode/IdCondolencia?idCondolencia=${this.$route.params.id}`" alt="QR Code da página">
+          </span>
           <div class="md:mb-1">
             <p class="text-xs mb-1">Compartilhe nas redes sociais:</p>
             <div>
@@ -165,7 +162,6 @@
 <script>
 import axios from "axios";
 import NavBar from "@/components/NavBar.vue";
-import QrcodeVue from "qrcode.vue";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 
@@ -173,7 +169,6 @@ export default {
   name: "condolencia",
   components: {
     NavBar,
-    QrcodeVue,
     Loading,
   },
   data() {
