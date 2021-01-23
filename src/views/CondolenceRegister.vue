@@ -30,6 +30,12 @@
               >
                 Nome é obrigatório
               </span>
+              <span
+                v-if="warning && !$v.condolencia.vitima.nome.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -50,7 +56,14 @@
               >
                 Sobrenome é obrigatório
               </span>
+              <span
+                v-if="warning && !$v.condolencia.vitima.sobrenome.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
+
             <div class="p-2 w-full md:w-1/3">
               <label for="vitima_cpf">CPF</label>
               <input
@@ -81,7 +94,16 @@
                 v-model="condolencia.vitima.rg"
                 id="vitima_rg"
                 name="vitima_rg"
+                :class="{
+                  'border-red-700': warning && $v.condolencia.vitima.rg.$error,
+                }"
               />
+              <span
+                v-if="warning && !$v.condolencia.vitima.rg.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -96,6 +118,12 @@
                     warning && $v.condolencia.vitima.endereco_rua.$error,
                 }"
               />
+              <span
+                v-if="warning && !$v.condolencia.vitima.endereco_rua.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -110,6 +138,12 @@
                     warning && $v.condolencia.vitima.endereco_cidade.$error,
                 }"
               />
+              <span
+                v-if="warning && !$v.condolencia.vitima.endereco_cidade.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
           </div>
 
@@ -126,6 +160,12 @@
                     warning && $v.condolencia.vitima.endereco_estado.$error,
                 }"
               />
+              <span
+                v-if="warning && !$v.condolencia.vitima.endereco_estado.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="form-group p-2 w-full md:w-2/3">
@@ -178,6 +218,12 @@
               >
                 Nome é obrigatório
               </span>
+              <span
+                v-if="warning && !$v.condolencia.pessoa.nome.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -198,6 +244,12 @@
               >
                 Sobrenome é obrigatório
               </span>
+              <span
+                v-if="warning && !$v.condolencia.pessoa.sobrenome.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
             <div class="p-2 w-full md:w-1/3">
               <label for="cpf">CPF*</label>
@@ -217,7 +269,6 @@
               >
                 CPF é obrigatório
               </span>
-
               <span
                 v-if="warning && !$v.condolencia.pessoa.cpf.valid"
                 class="invalid-feedback text-red-700"
@@ -236,6 +287,12 @@
                 id="rg"
                 name="rg"
               />
+              <span
+                v-if="warning && !$v.condolencia.pessoa.rg.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -275,11 +332,17 @@
                     warning && $v.condolencia.pessoa.sentimento.$error,
                 }"
               />
+              <span
+                v-if="warning && !$v.condolencia.pessoa.sentimento.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
               <p
                 class="text-sm text-gray-600 text-right mt-1 absolute right-0 mr-2"
                 v-if="condolencia.pessoa.sentimento"
               >
-                com {{ condolencia.pessoa.sentimento }}.
+                com {{ condolencia.pessoa.sentimento }}
               </p>
             </div>
           </div>
@@ -299,8 +362,21 @@
                   'border-red-700': warning && $v.condolencia.texto.$error,
                 }"
               ></textarea>
+              <span
+                v-if="warning && !$v.condolencia.texto.required"
+                class="invalid-feedback text-red-700"
+              >
+                Condolência é obrigatório
+              </span>
+              <span
+                v-if="warning && !$v.condolencia.texto.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
           </div>
+
           <div class="flex space-x-3 mt-2 p-2 items-center">
             <input
               type="checkbox"
@@ -360,7 +436,7 @@
 <script>
 // import Button from "@/components/Button.vue";
 import axios from "axios";
-import { required, email } from "vuelidate/lib/validators";
+import { required, email, maxLength } from "vuelidate/lib/validators";
 import Jumbotron from "@/components/Jumbotron";
 import { validate } from "gerador-validador-cpf";
 
@@ -418,25 +494,25 @@ export default {
   validations: {
     condolencia: {
       privacidade: { required },
-      texto: { required },
+      texto: { required, maxLength: maxLength(8000) },
       politica_privacidade: { required },
       vitima: {
-        nome: { required },
-        sobrenome: { required },
+        nome: { required, maxLength: maxLength(200) },
+        sobrenome: { required, maxLength: maxLength(200) },
         cpf: { valid: cpfValidator },
-        rg: {},
-        endereco_rua: {},
-        endereco_cidade: {},
-        endereco_estado: {},
+        rg: { maxLength: maxLength(15) },
+        endereco_rua: { maxLength: maxLength(200) },
+        endereco_cidade: { maxLength: maxLength(200) },
+        endereco_estado: { maxLength: maxLength(2) },
         imagem: {},
       },
       pessoa: {
-        nome: { required },
-        sobrenome: { required },
+        nome: { required, maxLength: maxLength(200) },
+        sobrenome: { required, maxLength: maxLength(200) },
         cpf: { required, valid: cpfValidator },
-        rg: {},
+        rg: { maxLength: maxLength(15) },
         email: { required, email },
-        sentimento: {},
+        sentimento: { maxLength: maxLength(200) },
       },
     },
   },

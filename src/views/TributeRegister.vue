@@ -29,6 +29,12 @@
               >
                 Nome é obrigatório
               </span>
+              <span
+                v-if="warning && !$v.depoimento.nome.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -47,6 +53,12 @@
                 class="invalid-feedback text-red-700"
               >
                 Sobrenome é obrigatório
+              </span>
+              <span
+                v-if="warning && !$v.depoimento.sobreNome.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
               </span>
             </div>
             <div class="p-2 w-full md:w-1/3">
@@ -67,7 +79,6 @@
               >
                 CPF é obrigatório
               </span>
-
               <span
                 v-if="warning && !$v.depoimento.cpf.valid"
                 class="invalid-feedback text-red-700"
@@ -80,7 +91,15 @@
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
               <label for="rg">RG</label>
-              <input type="text" v-model="depoimento.rg" id="rg" name="rg" />
+              <input type="text" v-model="depoimento.rg" id="rg" name="rg" :class="{
+                  'border-red-700': warning && $v.depoimento.rg.$error,
+                }" />
+              <span
+                v-if="warning && !$v.depoimento.rg.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -119,15 +138,29 @@
               <span
                 class="text-red-700"
                 v-if="warning && !$v.depoimento.profissao.required"
-                >profissão é obrigatório</span
+                >Profissão é obrigatório</span
               >
+              <span
+                v-if="warning && !$v.depoimento.profissao.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
           </div>
 
           <div class="md:flex mt-3">
             <div class="p-2 w-full md:w-1/3">
               <label for="rua">Logradouro</label>
-              <input type="text" v-model="depoimento.rua" id="rua" name="rua" />
+              <input type="text" v-model="depoimento.rua" id="rua" name="rua" :class="{
+                  'border-red-700': warning && $v.depoimento.rua.$error,
+                }" />
+              <span
+                v-if="warning && !$v.depoimento.rua.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3">
@@ -137,7 +170,16 @@
                 v-model="depoimento.cidade"
                 id="cidade"
                 name="cidade"
+                :class="{
+                  'border-red-700': warning && $v.depoimento.cidade.$error,
+                }"
               />
+              <span
+                v-if="warning && !$v.depoimento.cidade.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
 
             <div class="p-2 w-full md:w-1/3 relative">
@@ -148,7 +190,16 @@
                 v-model="depoimento.estado"
                 id="grid-estado"
                 name="grid-estado"
+                :class="{
+                  'border-red-700': warning && $v.depoimento.estado.$error,
+                }"
               />
+              <span
+                v-if="warning && !$v.depoimento.estado.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
           </div>
 
@@ -188,12 +239,21 @@
                 v-model="depoimento.sentimento"
                 id="grid-sentimento"
                 name="grid-sentimento"
+                :class="{
+                  'border-red-700': warning && $v.depoimento.sentimento.$error,
+                }"
               />
+              <span
+                v-if="warning && !$v.depoimento.sentimento.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
               <p
                 class="text-sm text-gray-600 text-right mt-1 absolute right-0 mr-2"
                 v-if="depoimento.sentimento"
               >
-                com {{ depoimento.sentimento }}.
+                com {{ depoimento.sentimento }}
               </p>
             </div>
           </div>
@@ -206,13 +266,25 @@
                 id="texto"
                 cols="10"
                 rows="6"
-                placeholder=" Escrever minha condolência"
+                placeholder=" Escrever meu depoimento"
                 v-model="depoimento.texto"
                 class="border p-2 mt-3 w-full"
                 :class="{
                   'border-red-700': warning && $v.depoimento.texto.$error,
                 }"
               ></textarea>
+              <span
+                v-if="warning && !$v.depoimento.texto.required"
+                class="invalid-feedback text-red-700"
+              >
+                Depoimento é obrigatório
+              </span>
+              <span
+                v-if="warning && !$v.depoimento.texto.maxLength"
+                class="invalid-feedback text-red-700"
+              >
+                Excedeu máximo de caracteres
+              </span>
             </div>
           </div>
 
@@ -258,7 +330,7 @@
 <script>
 // import Button from "@/components/Button.vue";
 import axios from "axios";
-import { required, email } from "vuelidate/lib/validators";
+import { required, email, maxLength } from "vuelidate/lib/validators";
 import Jumbotron from "@/components/Jumbotron";
 import { validate } from "gerador-validador-cpf";
 
@@ -276,7 +348,7 @@ const cpfValidator = (value) => {
 };
 
 export default {
-  name: "condolenceRegister",
+  name: "tributeRegister",
   components: {
     Jumbotron,
     Loading,
@@ -310,18 +382,18 @@ export default {
   validations: {
     depoimento: {
       privacidade: { required },
-      texto: { required },
+      texto: { required, maxLength: maxLength(8000) },
       politicaPrivacidade: { required },
-      nome: { required },
-      sobreNome: { required },
+      nome: { required, maxLength: maxLength(200) },
+      sobreNome: { required, maxLength: maxLength(200) },
       cpf: { required, valid: cpfValidator },
-      rg: {},
-      rua: {},
-      cidade: {},
-      estado: {},
-      profissao: { required },
+      rg: { maxLength: maxLength(15) },
+      rua: { maxLength: maxLength(200) },
+      cidade: { maxLength: maxLength(200) },
+      estado: { maxLength: maxLength(2) },
+      profissao: { required, maxLength: maxLength(200) },
       email: { required, email },
-      sentimento: {},
+      sentimento: { maxLength: maxLength(200) },
       fotografia: {},
     },
   },
@@ -341,7 +413,7 @@ export default {
           this.depoimento
         )
         .then(() => {
-          this.$router.push("/condolencia/sucesso");
+          this.$router.push("/depoimento/sucesso");
         })
         .catch(() => {
           alert(

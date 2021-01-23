@@ -58,7 +58,7 @@
             }}</strong></span
           >
           <span v-if="depoimento.sentimento" class="text-sm block"
-            >com {{ depoimento.sentimento }}.</span
+            >com {{ depoimento.sentimento }}</span
           >
         </div>
 

@@ -4,9 +4,6 @@
       <div class="search-wrapper flex items-baseline flex-col md:flex-row">
         <h3 class="text-2xl text-gray-900 font-semibold">
           Depoimentos
-          <span class="text-sm text-gray-800 align-middle block md:inline"
-            >(Área da saúde)</span
-          >
         </h3>
         <div class="md:ml-auto">
           <input

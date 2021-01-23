@@ -20,6 +20,11 @@ export default new Router({
           component: () => import("./views/CondolenceRegisterSuccess.vue"),
         },
         {
+          path: "/depoimento/sucesso",
+          name: "TributeRegisterSuccess",
+          component: () => import("./views/TributeRegisterSuccess.vue"),
+        },
+        {
           path: "/condolencias",
           name: "Condolences",
           component: () => import("./views/Condolences.vue"),

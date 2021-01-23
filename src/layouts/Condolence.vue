@@ -68,7 +68,7 @@
             }}</strong></span
           >
           <span v-if="condolencia.pessoa.sentimento" class="text-sm block"
-            >com {{ condolencia.pessoa.sentimento }}.</span
+            >com {{ condolencia.pessoa.sentimento }}</span
           >
         </div>
 
