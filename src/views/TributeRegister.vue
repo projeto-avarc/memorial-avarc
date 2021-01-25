@@ -409,7 +409,7 @@ export default {
       this.isLoading = true;
       axios
         .post(
-          "http://api.memorialavarc.com.br/api/Depoimentos",
+          "https://api.memorialavarc.com.br/api/Depoimentos",
           this.depoimento
         )
         .then(() => {

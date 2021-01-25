@@ -95,7 +95,7 @@ export default {
   mounted() {
     this.isLoading = true;
     this.getCondolencias(
-      `http://api.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`
+      `https://api.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`
     );
   },
   methods: {
@@ -105,11 +105,11 @@ export default {
       if (name === "") {
         this.search = "";
         this.getCondolencias(
-          `http://api.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`
+          `https://api.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=1`
         );
       } else {
         this.getCondolencias(
-          `http://api.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=1`
+          `https://api.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=1`
         );
       }
     },
@@ -117,9 +117,9 @@ export default {
     clickCallback: function(pageNum) {
       let route = "";
       if (this.isSearch) {
-        route = `http://api.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=${pageNum}`;
+        route = `https://api.memorialavarc.com.br/api/Mensagems/Nome?nome_vitima=${name}&qtd_registros=${this.itemsPage}&pagina=${pageNum}`;
       } else {
-        route = `http://api.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${pageNum}`;
+        route = `https://api.memorialavarc.com.br/api/Mensagems/status?status=Aprovado&qtd_registros=${this.itemsPage}&pagina=${pageNum}`;
       }
       this.getCondolencias(route);
     },

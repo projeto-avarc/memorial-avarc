@@ -528,7 +528,7 @@ export default {
       this.isLoading = true;
 
       axios
-        .post("http://api.memorialavarc.com.br/api/Mensagems", this.condolencia)
+        .post("https://api.memorialavarc.com.br/api/Mensagems", this.condolencia)
         .then(() => {
           this.$router.push("/condolencia/sucesso");
         })

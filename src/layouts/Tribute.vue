@@ -66,7 +66,7 @@
           class="flex justify-center items-center md:items-end flex-col sm:flex-row mt-10 mb-4"
         >
           <span class="QRCode">
-            <!-- <img class="sm:mr-6 mb-8 sm:mb-0" width="100" :src="`http://api.memorialavarc.com.br/api/QRCode/IdCondolencia?idCondolencia=${this.$route.params.id}`" alt="QR Code da página"> -->
+            <!-- <img class="sm:mr-6 mb-8 sm:mb-0" width="100" :src="`https://api.memorialavarc.com.br/api/QRCode/IdCondolencia?idCondolencia=${this.$route.params.id}`" alt="QR Code da página"> -->
           </span>
           <div class="md:mb-1">
             <p class="text-xs mb-1">Compartilhar:</p>
@@ -172,7 +172,7 @@ export default {
   mounted() {
     axios
       .get(
-        `http://api.memorialavarc.com.br/api/Depoimentos/id?id=${this.$route.params.id}`
+        `https://api.memorialavarc.com.br/api/Depoimentos/id?id=${this.$route.params.id}`
       )
       .then((response) => (this.depoimento = response.data))
       .finally(() => (this.isLoading = false));
