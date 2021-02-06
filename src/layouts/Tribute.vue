@@ -46,7 +46,7 @@
         </div>
 
         <div class="bg-blue-800 w-full flex flex-col items-center">
-          <div class="py-10 flex flex-col items-center space-y-3">
+          <div class="py-10 flex flex-col items-center space-y-3" style="white-space: break-spaces;">
             <span>{{ depoimento.texto }}</span>
           </div>
         </div>
