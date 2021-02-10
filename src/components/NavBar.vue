@@ -37,6 +37,7 @@
               <a
                 href="#responsive-header"
                 class="link block mt-4 lg:inline-block lg:mt-0 text-blue-900 font-normal text-base sm:text-lg md:text-md"
+                @click="closeMenu()"
               >
                 Condolências
               </a>
@@ -46,6 +47,7 @@
               <a
                 href="#responsive-header"
                 class="link block mt-4 lg:inline-block lg:mt-0 text-blue-900 font-normal text-base sm:text-lg md:text-md"
+                @click="closeMenu()"
               >
                 Depoimentos
               </a>
@@ -55,6 +57,7 @@
               <a
                 href="#responsive-header"
                 class="link block mt-4 lg:inline-block lg:mt-0 text-blue-900 font-normal text-base sm:text-lg md:text-md"
+                @click="closeMenu()"
               >
                 Sobre o memorial
               </a>
@@ -118,6 +121,9 @@ export default {
   methods: {
     changeNav() {
       this.showNav = !this.showNav;
+    },
+    closeMenu() {
+      if(this.showNav) !this.showNav;
     },
     preventLink(event) {
       event.preventDefault()
